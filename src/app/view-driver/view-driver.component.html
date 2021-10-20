@@ -1,0 +1,80 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">View Drivers</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="header-icon">
+          <i class="pe-7s-note2"></i>
+        </div>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- Form controls -->
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                  <div class="btn-group">
+                    <a class="btn btn-primary" routerLink="/addDriver"> <i class="fa fa-plus"></i> Add New Driver
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                  <div class="form-group has-search">
+                    <span class="fa fa-search search-Box-feedback"></span>
+                    <input type="text" class="search-Box" id="hoslisemp1" placeholder="search drivers...">
+
+                  </div>
+                </div>
+              </div>
+              <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
+              <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
+                [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
+                [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
+                <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                  <thead>
+                    <tr>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">
+                        S.No</th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Address </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Area </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Mobile No </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Phone No </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}" style="width:100px;">Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd gradeX" *ngFor="let list of driverList">
+                      <td style="text-transform: capitalize">{{list.id}}</td>
+                      <td class="left">{{list.name}}</td>
+                      <td class="left">{{list.address}}</td>
+                      <td class="left">{{list.area}}</td>
+                      <td class="left">{{list.mobileNo1}}</td>
+                      <td class="left">{{list.phoneNo1}}</td>
+                      <td class="left">
+                        <span tooltip="Update" [options]="myOptions">
+                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
+                            style="color: white;">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </button></span>
+                        <span tooltip="Delete" [options]="myOptions">
+                          <button class="btn btn-xs animation-rotation" (click)="updateDriver(list)">
+                            <i class="fa fa-trash" aria-hidden="true" style="color: white;background-color: red;"></i>
+                          </button></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section> <!-- /.content -->
+    </div> <!-- /.content-wrapper -->
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">View Booking</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="header-icon">
+          <i class="pe-7s-note2"></i>
+        </div>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- Form controls -->
+          <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+              <div class="panel-heading">
+                <div class="btn-group">
+                  <a class="btn btn-primary" routerLink="/addBooking"> <i class="fa fa-plus"></i> Add New Booking </a>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                <div class="form-group has-search" >
+                  <span class="fa fa-search search-Box-feedback"></span>
+                  <input type="text" class="search-Box"  id="hoslisemp1"
+                    placeholder="search bookings...">
+      
+                </div>
+              </div>
+              <div class="panel-body">
+                <table id="users">
+                  <tr>
+                    <th *ngFor="let column of headers">
+                      {{column}}
+                    </th>
+                  </tr>
+
+                  <tr *ngFor="let row of rows">
+                    <td>1</td>
+                    <td>TamilSelvan</td>
+                    <td>Alimul</td>
+                    <td>06:00AM</td>
+                    <td>Kumar</td>
+                    <td>Velachery</td>
+                    <td>Airport</td>
+                    <td>019833333222</td>
+                    <td>Toyota</td>
+                    <td>Velachery Main Road</td>
+                    <td>Meenambakkam Airport</td>
+                    <td>Need well experienced driver</td>
+                    <td>
+                      <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#ordine"><i
+                          class="fa fa-pencil"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#ordine"><i
+                          class="fa fa-trash-o"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section> <!-- /.content -->
+    </div> <!-- /.content-wrapper -->
+  </div>
+</div>
