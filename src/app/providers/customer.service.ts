@@ -57,7 +57,7 @@ export class CustomerService {
     para = para.set("", id);
 
     let value = { params: para }
-    return this.http.get(this.baseURL+"api/customer/customers", value).pipe(map((res: Response) => {
+    return this.http.get(this.baseURL+"api/customer/customers/"+id).pipe(map((res: Response) => {
       return res;
     }))
   }

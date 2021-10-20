@@ -110,7 +110,7 @@
                       <label style="  font-size: 18px;font-weight: 500;">License Date
                         <span class="required"> * </span>
                       </label>
-                      <input type="date" class="form-control" [(ngModel)]="licenseDate" formControlName="licenseDate"
+                      <input class="form-control" [ngModel]="licenseDate | date:'yyyy-MM-dd'" (ngModelChange)="licenseDate = $event" type="date" formControlName="licenseDate"
                         placeholder="Select date" required>
                       <span *ngIf="submitted && f.licenseDate.errors" style="color:red;font-size: small;">
                         <span *ngIf="f.licenseDate.errors.required" class="commonFont">
@@ -122,7 +122,7 @@
                       <label style=" font-size: 18px;font-weight: 500;">License Expiry Date
                         <span class="required"> * </span>
                       </label>
-                      <input type="date" class="form-control" [ngModel]="licenseExpiryDate | date:'yyyy-MM-dd'" (ngModelChange)="licenseExpiryDate = $event" type="date"
+                      <input class="form-control" [ngModel]="licenseExpiryDate | date:'yyyy-MM-dd'" (ngModelChange)="licenseExpiryDate = $event" type="date"
                         formControlName="licenseExpiryDate" placeholder="Selecy expiry date " required>
                       <span *ngIf="submitted && f.licenseExpiryDate.errors" style="color:red;font-size: small;">
                         <span *ngIf="f.licenseExpiryDate.errors.required" class="commonFont">

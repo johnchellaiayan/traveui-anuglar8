@@ -94,18 +94,18 @@ licenseDate:any;
     }
     this.driverService.getDriverDetails(id).subscribe(data => {
     this.driverDetail = data.results;
-       this.driverName = this.driverDetail[0].name;
-       this.address = this.driverDetail[0].address;
-        this.area = this.driverDetail[0].area;
-        this.id = this.driverDetail[0].id;
-        this.mobile1 = this.driverDetail[0].mobileNo1;
-        this.mobile2 = this.driverDetail[0].mobileNo2;
-        this.phone1 = this.driverDetail[0].phoneNo1;
-        this.phone2 = this.driverDetail[0].phoneNo2;
-        this.complaints = this.driverDetail[0].complaints;
-        this.license = this.driverDetail[0].licenseNo;
-        this.licenseDate = this.driverDetail[0].licenseDate;
-        this.licenseExpiryDate = this.driverDetail[0].licenseExpiryDate;
+       this.driverName = this.driverDetail.name;
+       this.address = this.driverDetail.address;
+        this.area = this.driverDetail.area;
+        this.id = this.driverDetail.id;
+        this.mobile1 = this.driverDetail.mobileNo1;
+        this.mobile2 = this.driverDetail.mobileNo2;
+        this.phone1 = this.driverDetail.phoneNo1;
+        this.phone2 = this.driverDetail.phoneNo2;
+        this.complaints = this.driverDetail.complaints;
+        this.license = this.driverDetail.licenseNo;
+        this.licenseDate = this.driverDetail.licenseDate;
+        this.licenseExpiryDate = this.driverDetail.licenseExpiryDate;
     }, error => {
 
     })

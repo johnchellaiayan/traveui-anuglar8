@@ -27,12 +27,14 @@ export class EditCustomerComponent implements OnInit {
   carName:any;
   complaints:any;
   customerRequest:any;
+  customerId:any;
   id:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public customerService:CustomerService,public router:Router,public ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     let id = this.ActivatedRoute.snapshot.paramMap.get('id');
-    this.getCustomerDetails(id);
+    this.customerId=parseInt(id);
+    this.getCustomerDetails(this.customerId);
     this.customerForm = this.formBuilder.group({
       customerName: ['', Validators.required],
       address: ['', Validators.required],
@@ -92,17 +94,17 @@ export class EditCustomerComponent implements OnInit {
     }
     this.customerService.getCustomerDetails(id).subscribe(data => {
       this.customerDetail = data.results;
-       this.customerName = this.customerDetail[0].name;
-       this.address = this.customerDetail[0].address;
-        this.area = this.customerDetail[0].area;
-        this.id = this.customerDetail[0].id;
-        this.mobile1 = this.customerDetail[0].mobileNo1;
-        this.mobile2 = this.customerDetail[0].mobileNo2;
-        this.phone1 = this.customerDetail[0].phoneNo1;
-        this.phone2 = this.customerDetail[0].phoneNo2;
-        this.complaints = this.customerDetail[0].complaints;
-        this.customerRequest = this.customerDetail[0].customerRequest;
-        this.carName = this.customerDetail[0].carName;
+       this.customerName = this.customerDetail.name;
+       this.address = this.customerDetail.address;
+        this.area = this.customerDetail.area;
+        this.id = this.customerDetail.id;
+        this.mobile1 = this.customerDetail.mobileNo1;
+        this.mobile2 = this.customerDetail.mobileNo2;
+        this.phone1 = this.customerDetail.phoneNo1;
+        this.phone2 = this.customerDetail.phoneNo2;
+        this.complaints = this.customerDetail.complaints;
+        this.customerRequest = this.customerDetail.customerRequest;
+        this.carName = this.customerDetail.carName;
         
     }, error => {
 

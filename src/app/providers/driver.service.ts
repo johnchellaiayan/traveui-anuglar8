@@ -53,7 +53,7 @@ export class DriverService {
     para = para.set("", id);
 
     let value = { params: para }
-    return this.http.get(this.baseURL+"api/driver/drivers", value).pipe(map((res: Response) => {
+    return this.http.get(this.baseURL+"api/driver/drivers/"+id).pipe(map((res: Response) => {
       return res;
     }))
   }
