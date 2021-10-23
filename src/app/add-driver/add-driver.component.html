@@ -44,18 +44,6 @@
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">Address
-                      <span class="required"> * </span>
-                    </label>
-                    <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="address" appTextDirective
-                      OnlyText="true" formControlName="address" maxlength="300"
-                      placeholder="Enter address ..."></textarea>
-                    <span *ngIf="submitted && f.address.errors" style="color:red;font-size: small;">
-                      <span *ngIf="f.address.errors.required" class="commonFont">
-                        Address is required.! </span>
-                    </span>
-                  </div>
-                  <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Driver Mobile1
                       <span class="required"> * </span>
                     </label>
@@ -65,7 +53,7 @@
                       <span *ngIf="f.mobile1.errors.required" class="commonFont">
                         Driver Mobile1 is required.! </span>
                     </span>
-                  </div> 
+                  </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Driver Mobile2
                       <span class="required"> * </span>
@@ -132,6 +120,18 @@
                     <span *ngIf="submitted && f.licenseExpiryDate.errors" style="color:red;font-size: small;">
                       <span *ngIf="f.licenseExpiryDate.errors.required" class="commonFont">
                         License Expiry Date is required.! </span>
+                    </span>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">Address
+                      <span class="required"> * </span>
+                    </label>
+                    <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="address" appTextDirective
+                      OnlyText="true" formControlName="address" maxlength="300"
+                      placeholder="Enter address ..."></textarea>
+                    <span *ngIf="submitted && f.address.errors" style="color:red;font-size: small;">
+                      <span *ngIf="f.address.errors.required" class="commonFont">
+                        Address is required.! </span>
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">

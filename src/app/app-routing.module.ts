@@ -13,22 +13,23 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { SignupComponent } from './signup/signup.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
+import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'addBooking', component: AddBookingComponent },
-  { path: 'viewBooking', component: ViewBookingComponent },
-  { path: 'addDriver', component: AddDriverComponent },
-  { path: 'viewDriver', component: ViewDriverComponent },
-  { path: 'addCustomer', component: AddCustomerComponent },
-  { path: 'viewCustomer', component: ViewCustomerComponent },
+  { path: 'home', component: HomeComponent , canActivate: [LoginGuard]},
+  { path: 'dashboard', component: DashboardComponent,  },
+  { path: 'addBooking', component: AddBookingComponent, canActivate: [LoginGuard] },
+  { path: 'viewBooking', component: ViewBookingComponent, canActivate: [LoginGuard] },
+  { path: 'addDriver', component: AddDriverComponent, canActivate: [LoginGuard] },
+  { path: 'viewDriver', component: ViewDriverComponent, canActivate: [LoginGuard] },
+  { path: 'addCustomer', component: AddCustomerComponent, canActivate: [LoginGuard] },
+  { path: 'viewCustomer', component: ViewCustomerComponent, canActivate: [LoginGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'forget', component: ForgetPasswordComponent },
+  { path: 'forget', component: ForgetPasswordComponent},
   { path: 'signup', component: SignupComponent },
-  { path: 'editCustomer/:id', component: EditCustomerComponent },
-  { path: 'editDriver/:id', component: EditDriverComponent },
+  { path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [LoginGuard] },
+  { path: 'editDriver/:id', component: EditDriverComponent , canActivate: [LoginGuard]},
 ];
 
 @NgModule({

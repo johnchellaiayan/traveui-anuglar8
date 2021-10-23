@@ -1,154 +1,168 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Update Driver Details</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="header-icon">
-            <i class="pe-7s-note2"></i>
-          </div>
-        </section>
-        <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <!-- Form controls -->
-            <div class="col-sm-12">
-              <div class="panel panel-bd lobidrag">
-                <div class="panel-body">
-                  <form action="#" id="form_sample_1" [formGroup]="driverForm" class="col-sm-12">
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Driver Name
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="driverName" appTextDirective OnlyText="true"
-                        formControlName="driverName" maxlength="35" placeholder="Enter Driver Name" required>
-                      <span *ngIf="submitted && f.driverName.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.driverName.errors.required" class="commonFont">
-                          Driver Name is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Area
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="area" appTextDirective OnlyText="true"
-                        formControlName="area" maxlength="100" placeholder="Enter area">
-                      <span *ngIf="submitted && f.area.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.area.errors.required" class="commonFont">
-                          Area is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Address
-                        <span class="required"> * </span>
-                      </label>
-                      <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="address" appTextDirective
-                        OnlyText="true" formControlName="address" maxlength="300"
-                        placeholder="Enter address ..."></textarea>
-                      <span *ngIf="submitted && f.address.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.address.errors.required" class="commonFont">
-                          Address is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Driver Mobile1
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="mobile1" appTextDirective OnlyText="true"
-                        formControlName="mobile1" maxlength="35" placeholder="Enter Mobile">
-                      <span *ngIf="submitted && f.mobile1.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.mobile1.errors.required" class="commonFont">
-                          Driver Mobile1 is required.! </span>
-                      </span>
-                    </div> 
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Driver Mobile2
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="mobile2" appTextDirective OnlyText="true"
-                        formControlName="mobile2" maxlength="35" placeholder="Enter Mobile">
-                      <span *ngIf="submitted && f.mobile2.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.mobile2.errors.required" class="commonFont">
-                          Driver Mobile2 is required.! </span>
-                      </span>
-                    </div>
-  
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Driver Phone1
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="phone1" appTextDirective OnlyText="true"
-                        formControlName="phone1" maxlength="35" placeholder="Enter Mobile">
-                      <span *ngIf="submitted && f.phone1.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.phone1.errors.required" class="commonFont">
-                          Driver Phone1 is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">Driver Phone2
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="phone2" appTextDirective OnlyText="true"
-                        formControlName="phone2" maxlength="35" placeholder="Enter Mobile">
-                      <span *ngIf="submitted && f.phone2.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.phone2.errors.required" class="commonFont">
-                          Driver Phone2 is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">License No
-                        <span class="required"> * </span>
-                      </label>
-                      <input type="text" class="form-control" [(ngModel)]="license" appTextDirective OnlyText="true"
-                        formControlName="license" maxlength="35" placeholder="Enter License No" required>
-                      <span *ngIf="submitted && f.license.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.license.errors.required" class="commonFont">
-                          License No is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                      <label style="  font-size: 18px;font-weight: 500;">License Date
-                        <span class="required"> * </span>
-                      </label>
-                      <input class="form-control" [ngModel]="licenseDate | date:'yyyy-MM-dd'" (ngModelChange)="licenseDate = $event" type="date" formControlName="licenseDate"
-                        placeholder="Select date" required>
-                      <span *ngIf="submitted && f.licenseDate.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.licenseDate.errors.required" class="commonFont">
-                          License Date is required.! </span>
-                      </span>
-                    </div>
-  
-                    <div class="col-sm-6 form-group">
-                      <label style=" font-size: 18px;font-weight: 500;">License Expiry Date
-                        <span class="required"> * </span>
-                      </label>
-                      <input class="form-control" [ngModel]="licenseExpiryDate | date:'yyyy-MM-dd'" (ngModelChange)="licenseExpiryDate = $event" type="date"
-                        formControlName="licenseExpiryDate" placeholder="Selecy expiry date " required>
-                      <span *ngIf="submitted && f.licenseExpiryDate.errors" style="color:red;font-size: small;">
-                        <span *ngIf="f.licenseExpiryDate.errors.required" class="commonFont">
-                          License Expiry Date is required.! </span>
-                      </span>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <label style="  font-size: 18px;font-weight: 500;">Complaints
-                        </label>
-                        <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="complaints" appTextDirective
-                          OnlyText="true" formControlName="complaints" maxlength="300"
-                          placeholder="Enter Complaints ..."></textarea>
-                        
-                      </div>
-  
-                    <div class="col-sm-12 reset-button">
-                      <a routerLink="/viewDriver" class="btn btn-warning">Cancel</a>
-                      <a (click)="updateDriver()" class="btn btn-success">update</a>
-                    </div>
-                  </form>
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="header-icon">
+                    <i class="pe-7s-note2"></i>
                 </div>
-              </div>
-            </div>
-          </div>
-  
-        </section> <!-- /.content -->
-      </div> <!-- /.content-wrapper -->
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- Form controls -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-bd lobidrag">
+                            <div class="panel-body">
+                                <form action="#" id="form_sample_1" [formGroup]="driverForm" class="col-sm-12">
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Name
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="driverName"
+                                            appTextDirective OnlyText="true" formControlName="driverName" maxlength="35"
+                                            placeholder="Enter Driver Name" required>
+                                        <span *ngIf="submitted && f.driverName.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.driverName.errors.required" class="commonFont">
+                                                Driver Name is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Area
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="area" appTextDirective
+                                            OnlyText="true" formControlName="area" maxlength="100"
+                                            placeholder="Enter area">
+                                        <span *ngIf="submitted && f.area.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.area.errors.required" class="commonFont">
+                                                Area is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Mobile1
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="mobile1" appTextDirective
+                                            OnlyText="true" formControlName="mobile1" maxlength="35"
+                                            placeholder="Enter Mobile">
+                                        <span *ngIf="submitted && f.mobile1.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.mobile1.errors.required" class="commonFont">
+                                                Driver Mobile1 is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Mobile2
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="mobile2" appTextDirective
+                                            OnlyText="true" formControlName="mobile2" maxlength="35"
+                                            placeholder="Enter Mobile">
+                                        <span *ngIf="submitted && f.mobile2.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.mobile2.errors.required" class="commonFont">
+                                                Driver Mobile2 is required.! </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Phone1
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="phone1" appTextDirective
+                                            OnlyText="true" formControlName="phone1" maxlength="35"
+                                            placeholder="Enter Mobile">
+                                        <span *ngIf="submitted && f.phone1.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.phone1.errors.required" class="commonFont">
+                                                Driver Phone1 is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Phone2
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="phone2" appTextDirective
+                                            OnlyText="true" formControlName="phone2" maxlength="35"
+                                            placeholder="Enter Mobile">
+                                        <span *ngIf="submitted && f.phone2.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.phone2.errors.required" class="commonFont">
+                                                Driver Phone2 is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">License No
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="license" appTextDirective
+                                            OnlyText="true" formControlName="license" maxlength="35"
+                                            placeholder="Enter License No" required>
+                                        <span *ngIf="submitted && f.license.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.license.errors.required" class="commonFont">
+                                                License No is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">License Date
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input class="form-control" [ngModel]="licenseDate | date:'yyyy-MM-dd'"
+                                            (ngModelChange)="licenseDate = $event" type="date"
+                                            formControlName="licenseDate" placeholder="Select date" required>
+                                        <span *ngIf="submitted && f.licenseDate.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.licenseDate.errors.required" class="commonFont">
+                                                License Date is required.! </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-6 form-group">
+                                        <label style=" font-size: 18px;font-weight: 500;">License Expiry Date
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input class="form-control" [ngModel]="licenseExpiryDate | date:'yyyy-MM-dd'"
+                                            (ngModelChange)="licenseExpiryDate = $event" type="date"
+                                            formControlName="licenseExpiryDate" placeholder="Selecy expiry date "
+                                            required>
+                                        <span *ngIf="submitted && f.licenseExpiryDate.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.licenseExpiryDate.errors.required" class="commonFont">
+                                                License Expiry Date is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Address
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="address"
+                                            appTextDirective OnlyText="true" formControlName="address" maxlength="300"
+                                            placeholder="Enter address ..."></textarea>
+                                        <span *ngIf="submitted && f.address.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.address.errors.required" class="commonFont">
+                                                Address is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Complaints
+                                        </label>
+                                        <textarea id="some-textarea" class="form-control" rows="3"
+                                            [(ngModel)]="complaints" appTextDirective OnlyText="true"
+                                            formControlName="complaints" maxlength="300"
+                                            placeholder="Enter Complaints ..."></textarea>
+
+                                    </div>
+
+                                    <div class="col-sm-12 reset-button">
+                                        <a routerLink="/viewDriver" class="btn btn-warning">Cancel</a>
+                                        <a (click)="updateDriver()" class="btn btn-success">update</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section> <!-- /.content -->
+        </div> <!-- /.content-wrapper -->
     </div>
-  </div>
+</div>

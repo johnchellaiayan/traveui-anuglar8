@@ -30,10 +30,6 @@
                     <input type="text" class="form-control" placeholder="Enter DriverName" required>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style=" font-size: 18px;font-weight: 500;">Report Date/time</label>
-                    <input type="email" class="form-control" placeholder="Selct Report Date.." required>
-                  </div>
-                  <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Name
                       <span class="required"> * </span>
                     </label>
@@ -48,44 +44,49 @@
                     <label style="  font-size: 18px;font-weight: 500;">Customer Phone1</label>
                     <input type="text" class="form-control" placeholder="Enter Phone1" required>
                   </div>
-
-                  <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">SMS To</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter SMS To ..."></textarea>
-                  </div>
-
-                  <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">From Address</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter Address ..."></textarea>
-                  </div>
-                  <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">Destination Address</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter Destination Address ..."></textarea>
-                  </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Vehicle Name</label>
                     <input type="text" class="form-control" placeholder="Enter Vechile Name" required>
-                  </div>
-
-                  <div class="col-sm-6 form-group">
-                    <label style=" font-size: 18px;font-weight: 500;">Remark</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter Remarks ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Phone2</label>
                     <input type="number" class="form-control" placeholder="Enter Mobile" required>
                   </div>
                   <div class="col-sm-6 form-group">
+                    <label style=" font-size: 18px;font-weight: 500;">Remark</label>
+                    <textarea id="some-textarea" class="form-control" rows="3"
+                      placeholder="Enter Remarks ..."></textarea>
+                  </div>
+                  <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Customer Request</label>
                     <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
                   </div>
-                  <div class="col-sm-12 form-group">
+                  <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Complaints</label>
                     <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
                   </div>
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">SMS To</label>
+                    <textarea id="some-textarea" class="form-control" rows="3"
+                      placeholder="Enter SMS To ..."></textarea>
+                  </div>
 
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">From Address</label>
+                    <textarea id="some-textarea" class="form-control" rows="3"
+                      placeholder="Enter Address ..."></textarea>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">Destination Address</label>
+                    <textarea id="some-textarea" class="form-control" rows="3"
+                      placeholder="Enter Destination Address ..."></textarea>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style=" font-size: 18px;font-weight: 500;">Report Date/time</label>
+                    <input type="date" class="form-control" placeholder="Selct Report Date.." required>
+                  </div>
                   <div class="col-sm-12 reset-button">
-                    <a  class="btn btn-warning">Reset</a>
+                    <a class="btn btn-warning">Reset</a>
                     <a (click)="addBooking()" class="btn btn-success">Save</a>
                   </div>
                 </form>

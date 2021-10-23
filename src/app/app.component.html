@@ -1,9 +1,12 @@
-<mat-drawer-container>
-  <mat-drawer mode="side" [opened]="sideBarOpen">
+<mat-drawer-container >
+  <mat-drawer-content  *ngIf="login3()">
+    <app-login></app-login>
+  </mat-drawer-content>
+  <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="login()">
     <!-- <mat-drawer mode="side" opened="true"> -->
     <app-sidenav></app-sidenav>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content  *ngIf="login()">
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
   </mat-drawer-content>
