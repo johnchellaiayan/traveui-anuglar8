@@ -37,6 +37,7 @@ import { DashboardService } from './providers/dashboard.service';
 import { environment } from '../environments/environment';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
+import { EditBookingComponent } from './edit-booking/edit-booking.component';
 
 
 
@@ -57,7 +58,8 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
     ForgetPasswordComponent,
     SignupComponent,
     EditCustomerComponent,
-    EditDriverComponent
+    EditDriverComponent,
+    EditBookingComponent
       ],
   imports: [
     BrowserModule,
@@ -81,7 +83,7 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [CustomerService,DriverService,BookingService,DashboardService ],
   bootstrap: [AppComponent],

@@ -25,6 +25,7 @@ driverForm: FormGroup;
   license:any;
   licenseDate:any;
   licenseExpiryDate:any;
+  isLoading:any;
 
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router) { }
 
@@ -65,17 +66,20 @@ driverForm: FormGroup;
     let licenseExpiryDate=value.licenseExpiryDate;
     
    
-  
+    this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate };
     this.driverService.addDriver(post).subscribe(res => {
       if(res.statusCode=='1'){
+      this.isLoading=false;
       this.toastr.success('Driver Information saved successfully','Success');
       this.router.navigate(["/viewDriver"]);
       }else{
+       this.isLoading=false;
       this.toastr.error('Driver Record not saved','Failed');
       this.router.navigate(["/viewDriver"]);
       }
     }, error => {
+      this.isLoading=false;
       this.toastr.error('Driver Record not saved','Failed');
       this.router.navigate(["/addDriver"]);
     })

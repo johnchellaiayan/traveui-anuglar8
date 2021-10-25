@@ -28,7 +28,7 @@ export class AddCustomerComponent implements OnInit {
   carName:any;
   complaints:any;
   customerRequest:any;
-
+  isLoading:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public customerService:CustomerService,public router:Router) { }
 
   ngOnInit(): void {
@@ -68,17 +68,20 @@ export class AddCustomerComponent implements OnInit {
     let customerRequest=value.customerRequest;
     
    
-  
+    this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"customerRequest":customerRequest,"complaints":complaints,"carName":carName };
     this.customerService.addCustomer(post).subscribe(res => {
       if(res.statusCode=='1'){
+        this.isLoading=false;
       this.toastr.success('Customer Information saved successfully','Success');
       this.router.navigate(["/viewCustomer"]);
       }else{
+        this.isLoading=false;
       this.toastr.error('Customer Record not saved','Failed');
       this.router.navigate(["/viewCustomer"]);
       }
     }, error => {
+      this.isLoading=false;
       this.toastr.error('Customer Record not saved','Failed');
       this.router.navigate(["/addCustomer"]);
     })

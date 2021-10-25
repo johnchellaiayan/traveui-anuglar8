@@ -32,9 +32,11 @@ bookingForm: FormGroup;
   complaints:any;
   customerRequest:any;
   bookStatus:any;
+  isLoading:any;
   constructor(public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.isLoading=false;
     this.bookingForm = this.formBuilder.group({
       customerName: ['', Validators.required],
       customerSearch: [],

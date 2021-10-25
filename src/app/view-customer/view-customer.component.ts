@@ -19,6 +19,7 @@ export class ViewCustomerComponent implements OnInit {
   submitted=false;
   searchList:any;
   customerList:any;
+  isLoading:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public customerService:CustomerService,public router:Router) { }
 
   ngOnInit(): void {
@@ -36,7 +37,9 @@ export class ViewCustomerComponent implements OnInit {
     return this.customerUpdateForm.controls;
   }
     getCustomerList(){
+      this.isLoading=true;
     this.customerService.viewCustomers().subscribe(data => {
+      this.isLoading=false;
       this.customerList = data.results;
       if( this.customerList.length == 0){
         this.table=false;
@@ -48,7 +51,7 @@ export class ViewCustomerComponent implements OnInit {
                   
                  
     }, error => {
-     
+     this.isLoading=false;
     })
   }
     updateCustomer(list){
@@ -66,7 +69,9 @@ export class ViewCustomerComponent implements OnInit {
       }
       return;
     }
+    this.isLoading=true;
       this.customerService.searchCustomer(search).subscribe(data => {
+        this.isLoading=false;
           this.searchList= data['results'];
           if( this.searchList==null){
           this.table1=false;

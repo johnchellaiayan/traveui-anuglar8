@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ViewBookingComponent implements OnInit {
   headers:any;
   rows:any;
+  filterDate:any;
   constructor() { }
 
   ngOnInit(): void {

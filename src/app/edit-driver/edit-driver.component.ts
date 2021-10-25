@@ -29,6 +29,7 @@ export class EditDriverComponent implements OnInit {
   licenseDate:any;
   id:any;
   isResigned:any;
+  isLoading:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router,public ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -76,17 +77,20 @@ export class EditDriverComponent implements OnInit {
     let isResigned=value.isResigned;
     
    
-  
+  this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,this.id).subscribe(res => {
       if(res.statusCode=='1'){
+        this.isLoading=false;
       this.toastr.success('Driver Information saved successfully','Success');
       this.router.navigate(["/viewDriver"]);
       }else{
+        this.isLoading=false;
       this.toastr.error('Driver Record not saved','Failed');
       this.router.navigate(["/viewDriver"]);
       }
     }, error => {
+      this.isLoading=false;
       this.toastr.error('Driver Record not saved','Failed');
       this.router.navigate(["/viewDriver"]);
     })
@@ -95,7 +99,9 @@ export class EditDriverComponent implements OnInit {
     if (id == undefined || id == null || id == "") {
       return;
     }
+    this.isLoading=true;
     this.driverService.getDriverDetails(id).subscribe(data => {
+      this.isLoading=false;
     this.driverDetail = data.results;
        this.driverName = this.driverDetail.name;
        this.address = this.driverDetail.address;
@@ -111,7 +117,7 @@ export class EditDriverComponent implements OnInit {
         this.licenseExpiryDate = this.driverDetail.licenseExpiryDate;
         this.isResigned=this.driverDetail.isResigned;
     }, error => {
-
+this.isLoading=false;
     })
   }
   }

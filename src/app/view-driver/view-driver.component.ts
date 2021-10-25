@@ -19,6 +19,7 @@ export class ViewDriverComponent implements OnInit {
   submitted=false;
   driverList:any;
   id:any;
+  isLoading:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router) { }
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ export class ViewDriverComponent implements OnInit {
                   
                  
     }, error => {
-     
+     this.isLoading=false;
     })
   }
     
@@ -67,17 +68,22 @@ export class ViewDriverComponent implements OnInit {
     let licenseExpiryDate=value.licenseExpiryDate;
     let isResigned="true";
    
-  
+  this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,id).subscribe(res => {
       if(res.statusCode=='1'){
+        this.isLoading=false;
       this.toastr.success('Driver enabled successfully.!','Success');
  this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["/viewDriver"]));      }else{
+      this.router.navigate(["/viewDriver"]));  
+          }else{
+            this.isLoading=false;
       this.toastr.error('Driver cant enabled','Failed');
  this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["/viewDriver"]));      }
+      this.router.navigate(["/viewDriver"]));   
+         }
     }, error => {
+      this.isLoading=false;
       this.toastr.error('Driver cant enabled','Failed');
  this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));    })
@@ -97,18 +103,21 @@ export class ViewDriverComponent implements OnInit {
     let licenseExpiryDate=value.licenseExpiryDate;
     let isResigned="false";
    
-  
+  this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,id).subscribe(res => {
       if(res.statusCode=='1'){
+        this.isLoading=false;
       this.toastr.success('Driver disabled successfully.!','Success');
       this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));
       }else{
+        this.isLoading=false;
        this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));
       }
     }, error => {
+      this.isLoading=false;
        this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));
     })
@@ -123,8 +132,9 @@ export class ViewDriverComponent implements OnInit {
         this.table1=false;
       }
       return;
-    }
+    }this.isLoading=true;
       this.driverService.searchDriver(search).subscribe(data => {
+        this.isLoading=false;
           this.searchList= data['results'];
           if( this.searchList==null){
           this.table1=false;

@@ -24,8 +24,11 @@
                   <span class=" search-Box-feedback"></span>
                   <input type="text" class="search-Box"  id="hoslisemp1"
                     placeholder="search bookings...">
-      
                 </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                <input type="date" class="form-control" [(ngModel)]="filterDate" formControlName="filterDate"
+                  placeholder="Select date" required>
               </div>
               <div class="panel-body">
                 <table id="users">

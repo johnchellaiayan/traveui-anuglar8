@@ -15,6 +15,10 @@ export class DashboardComponent implements OnInit {
  dashboardForm: FormGroup;
   submitted=false;
   res:any;
+  totalCustomers:any;
+  totalDrivers:any;
+  totalCurrentBookings:any;
+  totalUsers:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public dashboardService:DashboardService,public router:Router) { }
 
   ngOnInit(): void {
@@ -33,6 +37,10 @@ export class DashboardComponent implements OnInit {
     getStatistics(){
     this.dashboardService.getStatistics().subscribe(data => {
       this.res = data['results'];
+      this.totalCurrentBookings=this.res.totalCurrentBookings;
+      this.totalCustomers=this.res.totalCustomers;
+      this.totalDrivers=this.res.totalDrivers;
+      this.totalUsers=this.res.totalUsers;
                  
     }, error => {
      
