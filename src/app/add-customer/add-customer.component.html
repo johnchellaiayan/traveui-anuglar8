@@ -88,8 +88,10 @@
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">Car Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Car Name" required>
+                    <label style="  font-size: 18px;font-weight: 500;">Car Name
+                    </label>
+                    <input type="text" class="form-control" [(ngModel)]="carName" appTextDirective OnlyText="true"
+                      formControlName="carName" maxlength="100" placeholder="Enter Car Name">
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Address
@@ -104,16 +106,21 @@
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style=" font-size: 18px;font-weight: 500;">Customer Request</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
+                    <label style="  font-size: 18px;font-weight: 500;">Customer Request
+                    </label>
+                    <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="customerRequest"
+                      appTextDirective OnlyText="true" formControlName="customerRequest" maxlength="300"
+                      placeholder="Enter Customer Request..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style=" font-size: 18px;font-weight: 500;">Complaints</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
+                    <label style="  font-size: 18px;font-weight: 500;">Complaints
+                    </label>
+                    <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="complaints" appTextDirective
+                      OnlyText="true" formControlName="complaints" maxlength="300"
+                      placeholder="Enter Customer complaints..."></textarea>
                   </div>
-
                   <div class="col-sm-12 reset-button">
-                    <a class="btn btn-warning">Reset</a>
+                    <input type="reset" class="btn btn-warning" value="Reset"  />
                     <a (click)="addCustomer()" class="btn btn-success">Save</a>
                   </div>
                 </form>

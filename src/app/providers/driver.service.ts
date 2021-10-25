@@ -57,4 +57,10 @@ export class DriverService {
       return res;
     }))
   }
+  searchDriver(search){
+
+    return this.http.get(this.baseURL+"api/driver/search/name/"+search).pipe(map((res: Response) => {
+      return res;
+    }))
+  }
 }

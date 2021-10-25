@@ -19,6 +19,32 @@
                   <a class="btn btn-primary" routerLink="/viewBooking"> <i class="fa fa-list"></i> Booking List </a>
                 </div>
               </div>
+              <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" placeholder="Search Customers ..." aria-label="Number" matInput
+                      [formControl]="bookingForm.controls.customerSearch" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn.bind(this)" >
+                      <mat-option *ngFor="let cus of searchCustomerList | async" [value]="cus">
+                        {{cus.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" placeholder="Search Drivers ..." aria-label="Number" matInput
+                      [formControl]="bookingForm.controls.customerSearch" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith] ="displayFn1.bind(this)">
+                      <mat-option *ngFor="let driver of searchDriverList | async" [value]="driver">
+                        {{driver.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </form>
+              </div>
               <div class="panel-body">
                 <form action="#" id="form_sample_1" [formGroup]="bookingForm" class="col-sm-12">
                   <div class="col-sm-6 form-group">
@@ -82,8 +108,13 @@
                       placeholder="Enter Destination Address ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style=" font-size: 18px;font-weight: 500;">Report Date/time</label>
+                    <label style=" font-size: 18px;font-weight: 500;">Report Date</label>
                     <input type="date" class="form-control" placeholder="Selct Report Date.." required>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style=" font-size: 18px;font-weight: 500;">Report Time</label>
+                    <input theme="material-blue" id="001" arrowStyle="{'background': 'material-blue', 'color': 'white'}"
+                      class="form-control" atp-time-picker type placeholder="00:00"/>
                   </div>
                   <div class="col-sm-12 reset-button">
                     <a class="btn btn-warning">Reset</a>

@@ -61,5 +61,10 @@ export class CustomerService {
       return res;
     }))
   }
+ searchCustomer(search){
 
+    return this.http.get(this.baseURL+"api/customer/search/name/"+search).pipe(map((res: Response) => {
+      return res;
+    }))
+  }
 }

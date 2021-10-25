@@ -14,11 +14,46 @@ bookingForm: FormGroup;
   submitted = false;
   errorMsg: any;
   customerName:any;
+  customerSearch:any;
+  driverSearch:any;
+  searchCustomerList:any;
+  searchDriverList:any;
+  bookedBy:any;
+  driverName:any;
+  reportDate:any;
+  pickupArea:any;
+  dropArea:any;
+  custPhone2:any;
+  carName:any;
+  smsTo:any;
+  fromAddress:any;
+  toAddress:any;
+  remark:any;
+  complaints:any;
+  customerRequest:any;
+  bookStatus:any;
   constructor(public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
       customerName: ['', Validators.required],
+      customerSearch: [],
+      driverSearch: [],
+      bookedBy:[],
+      driverName:[],
+      reportDate:[],
+      pickupArea:[],
+      dropArea:[],
+      custPhone2:[],
+      carName:[],
+      smsTo:[],
+      fromAddress:[],
+      toAddress:[],
+      remark:[],
+      complaints:[],
+      customerRequest:[],
+      bookStatus:[]
+      
     })
   }
 
@@ -31,5 +66,11 @@ bookingForm: FormGroup;
     if (this.bookingForm.invalid) {
       return;
     }
+  }
+  displayFn(subject){
+   return subject ? subject.name : undefined;
+  }
+   displayFn1(subject){
+   return subject ? subject.name : undefined;
   }
 }

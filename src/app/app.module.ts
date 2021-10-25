@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { AmazingTimePickerModule } from 'amazing-time-picker'; // this line you need
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +33,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CustomerService } from './providers/customer.service';
 import { DriverService } from './providers/driver.service';
 import { BookingService } from './providers/booking.service';
+import { DashboardService } from './providers/dashboard.service';
 import { environment } from '../environments/environment';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
@@ -57,6 +62,7 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AmazingTimePickerModule, // this line you need
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(
@@ -73,9 +79,11 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
     MatDividerModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
-  providers: [CustomerService,DriverService,BookingService ],
+  providers: [CustomerService,DriverService,BookingService,DashboardService ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

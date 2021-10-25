@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit-driver.component.scss']
 })
 export class EditDriverComponent implements OnInit {
-driverForm: FormGroup;
+  driverForm: FormGroup;
   submitted = false;
   errorMsg: any;
   driverName:any;
@@ -26,8 +26,9 @@ driverForm: FormGroup;
   license:any;
   complaints:any;
   licenseExpiryDate:any;
-licenseDate:any;
+  licenseDate:any;
   id:any;
+  isResigned:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router,public ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,7 +46,8 @@ licenseDate:any;
       license:[],
       licenseDate:[],
       licenseExpiryDate:[],
-      id:[]
+      id:[],
+      isResigned:[]
     })
   }
 
@@ -71,10 +73,11 @@ licenseDate:any;
     let complaints=value.complaints;
     let licenseDate=value.licenseDate;
     let licenseExpiryDate=value.licenseExpiryDate;
+    let isResigned=value.isResigned;
     
    
   
-    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate };
+    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,this.id).subscribe(res => {
       if(res.statusCode=='1'){
       this.toastr.success('Driver Information saved successfully','Success');
@@ -106,6 +109,7 @@ licenseDate:any;
         this.license = this.driverDetail.licenseNo;
         this.licenseDate = this.driverDetail.licenseDate;
         this.licenseExpiryDate = this.driverDetail.licenseExpiryDate;
+        this.isResigned=this.driverDetail.isResigned;
     }, error => {
 
     })
