@@ -54,9 +54,6 @@ export class ViewCustomerComponent implements OnInit {
      this.isLoading=false;
     })
   }
-    updateCustomer(list){
-
-    }
 
      searchCustomer(searchText){
     let search = searchText.target.value

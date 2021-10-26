@@ -8,7 +8,7 @@
           <i class="pe-7s-note2"></i>
         </div>
       </section>
-      <div *ngIf="isLoading"  class="loader"></div>
+      <div *ngIf="isLoading" class="loader"></div>
       <!-- Main content -->
       <section class="content">
         <div class="row">
@@ -23,17 +23,18 @@
               <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
                 <form class="example-form">
                   <mat-form-field class="example-full-width">
-                    <input type="text" placeholder="Search Customers ..." aria-label="Number" matInput
-                      [formControl]="bookingForm.controls.customerSearch" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn.bind(this)" >
-                      <mat-option *ngFor="let cus of searchCustomerList | async" [value]="cus">
+                    <input type="text" (keyup)="onEnter($event)" placeholder="Search Customers ..." aria-label="Number"
+                      matInput [formControl]="bookingForm.controls.customerSearch" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                      (optionSelected)="selectedOption($event.option)" [displayWith]="displayFn.bind(this)">
+                      <mat-option *ngFor="let cus of searchCustomerList" [value]="cus">
                         {{cus.name}}
                       </mat-option>
                     </mat-autocomplete>
                   </mat-form-field>
                 </form>
               </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+              <!-- <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
                 <form class="example-form">
                   <mat-form-field class="example-full-width">
                     <input type="text" placeholder="Search Drivers ..." aria-label="Number" matInput
@@ -45,16 +46,18 @@
                     </mat-autocomplete>
                   </mat-form-field>
                 </form>
-              </div>
+              </div> -->
               <div class="panel-body">
                 <form action="#" id="form_sample_1" [formGroup]="bookingForm" class="col-sm-12">
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Booked By</label>
-                    <input type="text" class="form-control" placeholder="Enter Booked By Name" required>
+                    <input type="text" class="form-control" [(ngModel)]="bookedBy" formControlName="bookedBy"
+                      appTextDirective OnlyText="true" placeholder="Enter Booked By Name" required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">DriverName</label>
-                    <input type="text" class="form-control" placeholder="Enter DriverName" required>
+                    <input type="text" class="form-control" [(ngModel)]="driverName" formControlName="driverName"
+                      appTextDirective OnlyText="true" placeholder="Enter DriverName" required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Name
@@ -69,56 +72,67 @@
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Phone1</label>
-                    <input type="text" class="form-control" placeholder="Enter Phone1" required>
+                    <input type="text" class="form-control" [(ngModel)]="custPhone1" formControlName="custPhone1"
+                    appTextDirective OnlyText="true" placeholder="Enter Phone1" required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Vehicle Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Vechile Name" required>
+                    <input type="text" class="form-control"  [(ngModel)]="carName" formControlName="carName"
+                    appTextDirective OnlyText="true" placeholder="Enter Vechile Name" required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Phone2</label>
-                    <input type="number" class="form-control" placeholder="Enter Mobile" required>
+                    <input type="text" class="form-control" [(ngModel)]="custPhone2" formControlName="custPhone2"
+                    appTextDirective OnlyText="true" placeholder="Enter Mobile" required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Remark</label>
-                    <textarea id="some-textarea" class="form-control" rows="3"
+                    <textarea id="some-textarea" class="form-control"[(ngModel)]="remarks" formControlName="remarks"
+                    appTextDirective OnlyText="true"  rows="3"
                       placeholder="Enter Remarks ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Customer Request</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
+                    <textarea id="some-textarea" class="form-control" [(ngModel)]="customerRequest" formControlName="customerRequest"
+                    appTextDirective OnlyText="true" rows="3" placeholder="Enter text ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Complaints</label>
-                    <textarea id="some-textarea" class="form-control" rows="3" placeholder="Enter text ..."></textarea>
+                    <textarea id="some-textarea" class="form-control" [(ngModel)]="complaints" formControlName="complaints"
+                    appTextDirective OnlyText="true" rows="3" placeholder="Enter text ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">SMS To</label>
-                    <textarea id="some-textarea" class="form-control" rows="3"
+                    <textarea id="some-textarea" class="form-control" [(ngModel)]="smsTo" formControlName="smsTo"
+                    appTextDirective OnlyText="true" rows="3"
                       placeholder="Enter SMS To ..."></textarea>
                   </div>
 
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">From Address</label>
-                    <textarea id="some-textarea" class="form-control" rows="3"
+                    <textarea id="some-textarea" class="form-control" [(ngModel)]="fromAddress" formControlName="fromAddress"
+                    appTextDirective OnlyText="true" rows="3"
                       placeholder="Enter Address ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Destination Address</label>
-                    <textarea id="some-textarea" class="form-control" rows="3"
+                    <textarea id="some-textarea" class="form-control"[(ngModel)]="toAddress" formControlName="toAddress"
+                    appTextDirective OnlyText="true" rows="3"
                       placeholder="Enter Destination Address ..."></textarea>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Report Date</label>
-                    <input type="date" class="form-control" placeholder="Selct Report Date.." required>
+                    <input type="date" class="form-control" [(ngModel)]="reportDate" formControlName="reportDate"
+                    placeholder="Selct Report Date.." required>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style=" font-size: 18px;font-weight: 500;">Report Time</label>
                     <input theme="material-blue" id="001" arrowStyle="{'background': 'material-blue', 'color': 'white'}"
-                      class="form-control" atp-time-picker type placeholder="00:00"/>
+                      class="form-control" [(ngModel)]="reportTime" formControlName="reportTime"
+                       atp-time-picker placeholder="00:00" />
                   </div>
                   <div class="col-sm-12 reset-button">
-                    <a class="btn btn-warning">Reset</a>
+                    <input type="reset" class="btn btn-warning" value="Reset"  />
                     <a (click)="addBooking()" class="btn btn-success">Save</a>
                   </div>
                 </form>

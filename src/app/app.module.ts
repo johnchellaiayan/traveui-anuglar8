@@ -5,6 +5,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { AmazingTimePickerModule } from 'amazing-time-picker'; // this line you need
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -84,6 +85,7 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatDatepickerModule
   ],
   providers: [CustomerService,DriverService,BookingService,DashboardService ],
   bootstrap: [AppComponent],

@@ -6,9 +6,9 @@
       <section class="content-header">
         <div class="header-icon">
           <i class="pe-7s-note2"></i>
-        </div> 
+        </div>
       </section>
-      <div *ngIf="isLoading"  class="loader"></div>
+      <div *ngIf="isLoading" class="loader"></div>
       <!-- Main content -->
       <section class="content">
         <div class="row">
@@ -91,8 +91,13 @@
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Car Name
                     </label>
+                    <span class="required"> * </span>
                     <input type="text" class="form-control" [(ngModel)]="carName" appTextDirective OnlyText="true"
                       formControlName="carName" maxlength="100" placeholder="Enter Car Name">
+                    <span *ngIf="submitted && f.carName.errors" style="color:red;font-size: small;">
+                      <span *ngIf="f.carName.errors.required" class="commonFont">
+                        Car Name is required.! </span>
+                    </span>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Address
@@ -121,7 +126,7 @@
                       placeholder="Enter Customer complaints..."></textarea>
                   </div>
                   <div class="col-sm-12 reset-button">
-                    <input type="reset" class="btn btn-warning" value="Reset"  />
+                    <input type="reset" class="btn btn-warning" value="Reset" />
                     <a (click)="addCustomer()" class="btn btn-success">Save</a>
                   </div>
                 </form>

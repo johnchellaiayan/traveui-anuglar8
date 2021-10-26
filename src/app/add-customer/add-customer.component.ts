@@ -41,7 +41,7 @@ export class AddCustomerComponent implements OnInit {
       mobile1: ['', Validators.required],
       mobile2: ['', Validators.required],
       complaints:[],
-      carName:[],
+      carName:['', Validators.required],
       customerRequest:[],
     })
   }

@@ -24,8 +24,7 @@ export class ViewDriverComponent implements OnInit {
 
   ngOnInit(): void {
  this.driverUpdateForm = this.formBuilder.group({
-      description: ['',Validators.required],
-      symptom: ['',Validators.required],
+      
     })
     this.getDriverList();
     this.submitted= true;

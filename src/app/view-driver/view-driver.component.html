@@ -8,6 +8,7 @@
           <i class="pe-7s-note2"></i>
         </div>
       </section>
+      <div *ngIf="isLoading"  class="loader"></div>
       <!-- Main content -->
       <section class="content">
         <div class="row">
@@ -25,9 +26,9 @@
                   <div class="form-group has-search">
                     <input type="text" class="search-Box" (keyup)="searchDriver($event)" id="hoslisemp1"
                       placeholder="search drivers...">
-
                   </div>
                 </div>
+
               </div>
               <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
               <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
