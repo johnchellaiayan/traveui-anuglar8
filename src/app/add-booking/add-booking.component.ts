@@ -88,7 +88,7 @@ bookingForm: FormGroup;
     let customerRequest=value.customerRequest;
     let reportTime=value.reportTime;3
     let reportDate=value.reportDate;
-    let bookStatus="Initiated";
+    let bookStatus="Confirmed";
     let reportDateAndTime=reportDate+" "+reportTime+":00";
     this.isLoading=true;
     let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus };

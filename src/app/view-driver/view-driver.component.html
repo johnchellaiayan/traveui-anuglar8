@@ -8,7 +8,7 @@
           <i class="pe-7s-note2"></i>
         </div>
       </section>
-      <div *ngIf="isLoading"  class="loader"></div>
+      <div *ngIf="isLoading" class="loader"></div>
       <!-- Main content -->
       <section class="content">
         <div class="row">
@@ -69,23 +69,21 @@
                         [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
                         {{list.phoneNo1}}</td>
                       <td class="left">
-                        <span tooltip="Update" [options]="myOptions">
-                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
+                          <button  mat-raised-button
+                          matTooltip="Edit Driver Details" class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
                             style="color: white;">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button></span>
-                        <span tooltip="Enable" [options]="myOptions">
-                          <button class="btn  btn-xs animation-rotation" id="btn2" (click)="disableDriver(list)"
+                          </button>
+                          <button  mat-raised-button
+                          matTooltip="Disable Driver" class="btn  btn-xs animation-rotation" id="btn2" (click)="disableDriver(list)"
                             *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
                             <i class="fa fa-ban" aria-hidden="true"></i>
                           </button>
-                        </span>
-                        <span tooltip="Enable" [options]="myOptions">
-                          <button class="btn  btn-xs animation-rotation" id="btn2" (click)="enableDriver(list)"
+                          <button  mat-raised-button
+                          matTooltip="Enable Driver" class="btn  btn-xs animation-rotation" id="btn2" (click)="enableDriver(list)"
                             *ngIf='list.isResigned=="false"' style="color: white;">
                             <i class="fa fa-check" aria-hidden="true"></i>
                           </button>
-                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -127,23 +125,20 @@
                         [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
                         {{list.phoneNo1}}</td>
                       <td class="left">
-                        <span tooltip="Update" [options]="myOptions">
-                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
-                            style="color: white;">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button></span>
-                        <span tooltip="Enable" [options]="myOptions">
-                          <button class="btn  btn-xs animation-rotation" id="btn2" (click)="disableDriver(list)"
-                            *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
-                            <i class="fa fa-ban" aria-hidden="true"></i>
-                          </button>
-                        </span>
-                        <span tooltip="Enable" [options]="myOptions">
-                          <button class="btn  btn-xs animation-rotation" id="btn2" (click)="enableDriver(list)"
-                            *ngIf=' list.isResigned !=null && list.isResigned=="false"' style="color: white;">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                          </button>
-                        </span>
+                        <button mat-raised-button matTooltip="Edit Driver Details" class="btn btn-xs animation-rotation"
+                          [routerLink]="['/editDriver/',list.id]" style="color: white;">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button matTooltip="Disable driver" class="btn  btn-xs animation-rotation"
+                          id="btn2" (click)="disableDriver(list)"
+                          *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
+                          <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button matTooltip="Enable Driver" class="btn  btn-xs animation-rotation"
+                          id="btn2" (click)="enableDriver(list)"
+                          *ngIf=' list.isResigned !=null && list.isResigned=="false"' style="color: white;">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                        </button>
                       </td>
                     </tr>
                   </tbody>

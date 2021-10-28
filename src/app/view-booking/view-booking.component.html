@@ -30,15 +30,16 @@
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
-                  <input type="date" (ngModelChange)="getBookingList()" class="form-control" [(ngModel)]="bookingDate" [formControl]="bookingUpdateForm.controls.bookingDate" 
-                    placeholder="Select date" required>
+                  <input type="date" (ngModelChange)="getBookingList()" class="form-control" [(ngModel)]="bookingDate"
+                    [formControl]="bookingUpdateForm.controls.bookingDate" placeholder="Select date" required>
                 </div>
               </div>
               <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
               <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
                 [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
                 [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
-                <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4"
+                  style=" position: relative;">
                   <thead>
                     <tr>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">S.No </th>
@@ -54,7 +55,7 @@
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">To address </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Complaints </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">SmsTo </th>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Request </th>                      
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Request </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}" style="width:100px;">Action
                       </th>
                     </tr>
@@ -62,20 +63,20 @@
                   <tbody>
                     <tr class="odd gradeX" *ngFor="let list of bookingList">
                       <td class="left"
-                        [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
                         {{list.id}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.bookedby}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.bookedby}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.driverName}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.driverName}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.reportDate}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.reportDate}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.customerName}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.customerName}}</td>
                       <!-- <td class="left"
                         [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
                         {{list.pickupArea}}</td>
@@ -83,38 +84,119 @@
                         [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
                         {{list.dropArea}}</td> -->
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.custPhone1}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.custPhone1}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.carName}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.carName}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.fromAddress}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.fromAddress}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.toAddress}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.toAddress}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.complaints}}</td>
-                        <td class="left"
-                        [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.complaints}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
                         {{list.smsTo}}</td>
                       <td class="left"
-                      [ngStyle]="list.driverName==null?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'}">
-                      {{list.customerRequest}}</td>
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.customerRequest}}</td>
                       <td class="left">
-                        <span tooltip="Update" [options]="myOptions">
-                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editBooking/',list.id]"
-                            style="color: white;">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button></span>
-                        <span tooltip="Enable" [options]="myOptions">
-                          <button class="btn  btn-xs animation-rotation" id="btn2" (click)="cancelBooking(list)"
-                            *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
-                            <i class="fa fa-ban" aria-hidden="true"></i>
-                          </button>
-                        </span>
+                        <button mat-raised-button matTooltip="Update Booking Details"
+                          class="btn btn-xs animation-rotation" [routerLink]="['/editBooking/',list.id]"
+                          style="color: white;">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button matTooltip="Cancel Booking" class="btn  btn-xs animation-rotation"
+                          id="btn2" (click)="cancelBooking(list)" [disabled]="list.bookStatus=='Cancelled'"
+                          style="color: white;">
+                          <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-scrollable " *ngIf="table1">
+                <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                  <thead>
+                    <tr>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">S.No </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">BookedBy </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Report Date </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Name </th>
+                      <!-- <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Pickup Area </th>
+                    <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Drop Area </th> -->
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Phone1 </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Vechile </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">From Address </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">To address </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Complaints </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">SmsTo </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Request </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}" style="width:100px;">Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd gradeX" *ngFor="let list of searchList">
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.id}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.bookedby}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.driverName}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.reportDate}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.customerName}}</td>
+                      <!-- <td class="left"
+                      [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                      {{list.pickupArea}}</td>
+                      <td class="left"
+                      [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                      {{list.dropArea}}</td> -->
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.custPhone1}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.carName}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.fromAddress}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.toAddress}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.complaints}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.smsTo}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        {{list.customerRequest}}</td>
+                      <td class="left">
+                        <button mat-raised-button matTooltip="Update Booking Details"
+                          class="btn btn-xs animation-rotation" [routerLink]="['/editBooking/',list.id]"
+                          style="color: white;">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button matTooltip="Cancel Booking" class="btn  btn-xs animation-rotation"
+                          id="btn2" (click)="cancelBooking(list)" [disabled]="list.bookStatus=='Cancelled'"
+                          style="color: white;">
+                          <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
                       </td>
                     </tr>
                   </tbody>

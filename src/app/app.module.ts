@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AmazingTimePickerModule } from 'amazing-time-picker'; // this line you need
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -85,7 +85,8 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule, 
+    MatTooltipModule
   ],
   providers: [CustomerService,DriverService,BookingService,DashboardService ],
   bootstrap: [AppComponent],

@@ -7,13 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  username:any;
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let firstName=localStorage.getItem('uname');
+    let lastName=localStorage.getItem('lname');
+    
+    this.username= firstName+" " +lastName;
+  }
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
+  }
+
+  clear(){
+    localStorage.clear();
   }
 }

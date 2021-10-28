@@ -56,11 +56,11 @@
                       <td class="left">{{list.mobileNo1}}</td>
                       <td class="left">{{list.phoneNo1}}</td>
                       <td class="left">
-                        <span tooltip="Update" [options]="myOptions">
-                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editCustomer/',list.id]"
+                          <button  mat-raised-button
+                          matTooltip="Edit Customer Details" class="btn btn-xs animation-rotation" [routerLink]="['/editCustomer/',list.id]"
                             style="color: white;">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button></span>
+                          </button>
                        
                       </td>
                     </tr>
@@ -91,11 +91,11 @@
                       <td class="left">{{list.mobileNo1}}</td>
                       <td class="left">{{list.phoneNo1}}</td>
                       <td class="left">
-                        <span tooltip="Update" [options]="myOptions">
-                          <button class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
+                          <button  mat-raised-button
+                          matTooltip="Edit Customer Details" class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
                             style="color: white;">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button></span>
+                          </button>
                         
                       </td>
                     </tr>

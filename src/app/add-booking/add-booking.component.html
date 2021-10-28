@@ -23,7 +23,7 @@
               <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
                 <form class="example-form">
                   <mat-form-field class="example-full-width">
-                    <input type="text" (keyup)="onEnter($event)" placeholder="Search Customers ..." aria-label="Number"
+                    <input type="text" (keyup)="onEnter($event)" placeholder="Search Customer name/area/mobile ..." aria-label="Number"
                       matInput [formControl]="bookingForm.controls.customerSearch" [matAutocomplete]="auto">
                     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
                       (optionSelected)="selectedOption($event.option)" [displayWith]="displayFn.bind(this)">

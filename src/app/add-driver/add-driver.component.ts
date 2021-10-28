@@ -64,10 +64,10 @@ driverForm: FormGroup;
     let license=value.license;
     let licenseDate=value.licenseDate;
     let licenseExpiryDate=value.licenseExpiryDate;
-    
+    let isResigned="true";
    
     this.isLoading=true;
-    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate };
+    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.addDriver(post).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;

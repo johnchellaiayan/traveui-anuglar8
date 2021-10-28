@@ -63,7 +63,7 @@ export class CustomerService {
   }
  searchCustomer(search){
 
-    return this.http.get(this.baseURL+"api/customer/search/name/"+search).pipe(map((res: Response) => {
+    return this.http.get(this.baseURL+"api/customer/search/"+search).pipe(map((res: Response) => {
       return res;
     }))
   }

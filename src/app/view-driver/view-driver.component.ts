@@ -66,7 +66,7 @@ export class ViewDriverComponent implements OnInit {
     let licenseDate=value.licenseDate;
     let licenseExpiryDate=value.licenseExpiryDate;
     let isResigned="true";
-   
+   if(window.confirm('Are sure you want to activate this driver ?')){
   this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,id).subscribe(res => {
@@ -86,6 +86,9 @@ export class ViewDriverComponent implements OnInit {
       this.toastr.error('Driver cant enabled','Failed');
  this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));    })
+   }else{
+
+   }
   }
      disableDriver(value){
     let name = value.name;
@@ -101,7 +104,7 @@ export class ViewDriverComponent implements OnInit {
     let licenseDate=value.licenseDate;
     let licenseExpiryDate=value.licenseExpiryDate;
     let isResigned="false";
-   
+      if(window.confirm('Are sure you want to De-activate this driver ?')){
   this.isLoading=true;
     let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
     this.driverService.updateDriver(post,id).subscribe(res => {
@@ -120,6 +123,7 @@ export class ViewDriverComponent implements OnInit {
        this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewDriver"]));
     })
+      }
   }
    searchDriver(searchText){
     let search = searchText.target.value

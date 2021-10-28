@@ -13,6 +13,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { SignupComponent } from './signup/signup.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
+import { EditBookingComponent } from './edit-booking/edit-booking.component';
 import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [LoginGuard] },
   { path: 'editDriver/:id', component: EditDriverComponent , canActivate: [LoginGuard]},
+  { path: 'editBooking/:id', component: EditBookingComponent , canActivate: [LoginGuard]},
 ];
 
 @NgModule({

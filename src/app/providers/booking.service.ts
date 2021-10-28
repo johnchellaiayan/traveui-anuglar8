@@ -42,7 +42,7 @@ public urlList = [];
         'Content-Type': 'application/json',
       })
     };
-    return this.http.put(this.baseURL+"api/booking/bookings/"+id, post, header).pipe(map((res: Response) => {
+    return this.http.put(this.baseURL+"api/booking/bookings/update/"+id, post, header).pipe(map((res: Response) => {
       return res;
     }));
   }
@@ -60,7 +60,7 @@ public urlList = [];
   }
     getBookingsByDate(search){
 
-    return this.http.get(this.baseURL+"api/booking/bookings/"+search).pipe(map((res: Response) => {
+    return this.http.get(this.baseURL+"api/booking/bookings/search/"+search).pipe(map((res: Response) => {
       return res;
     }))
   }

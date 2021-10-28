@@ -27,11 +27,11 @@ export class ViewBookingComponent implements OnInit {
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public bookingService:BookingService,public router:Router) { }
    
   ngOnInit(): void {
+        this.bookingDate = new Date().toISOString().split('T')[0];
          this.bookingUpdateForm = this.formBuilder.group({
       bookingDate: ['',Validators.required],
         })
-    this.getBookingList();
-    this.bookingDate = new Date().toISOString().split('T')[0];
+    this.getBookingsOnInit();
     this.submitted= true;
     if(this.bookingUpdateForm.invalid){
       return;
@@ -40,12 +40,29 @@ export class ViewBookingComponent implements OnInit {
      get f(){
     return this.bookingUpdateForm.controls;
   }
+    getBookingsOnInit(){
+      let value=new Date().toISOString().split('T')[0];
+    this.bookingService.getBookingsByDate(value).subscribe(data => {
+      this.bookingList = data["results"];
+      if( this.bookingList == null){
+        this.table=false;
+        this.noData = "No bookings been added to the system."
+                  }else{
+                    this.table=true;
+                    this.noData="";
+                  }
+                  
+                 
+    }, error => {
+     this.isLoading=false;
+    })
+  }
     getBookingList(){
       let value=this.bookingUpdateForm.value;
       let date=value.bookingDate;
     this.bookingService.getBookingsByDate(date).subscribe(data => {
       this.bookingList = data["results"];
-      if( this.bookingList.length == 0){
+      if( this.bookingList == null){
         this.table=false;
         this.noData = "No bookings been added to the system."
                   }else{
@@ -60,49 +77,53 @@ export class ViewBookingComponent implements OnInit {
   }
     
     cancelBooking(value){
-    let name = value.name;
-    let address = value.address;
-    let area=value.area;
-    let phone1=value.phoneNo1;
-    let phone2=value.phoneNo2;
-    let mobile1=value.mobileNo1;
-    let mobile2=value.mobileNo2;
-    let id=value.id;
-    let license=value.licenseNo;
+    let bookedBy=value.bookedby;
+    let driverName=value.driverName;
+    let customerName=value.customerName;
+    let custPhone1=value.custPhone1;
+    let custPhone2=value.custPhone2;
+    let carName=value.carName;
+    let smsTo=value.smsTo;
+    let fromAddress=value.fromAddress;
+    let toAddress=value.toAddress;
+    let remarks=value.remarks;
     let complaints=value.complaints;
-    let licenseDate=value.licenseDate;
-    let licenseExpiryDate=value.licenseExpiryDate;
-    let isResigned="true";
-   
-  this.isLoading=true;
-    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"complaints":complaints,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
+    let customerRequest=value.customerRequest;
+    let reportDate=value.reportDate;
+    let bookStatus="Cancelled";
+    let id=value.id;
+       if(window.confirm('Are sure you want to cancel this booking ?')){
+    this.isLoading=true;
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDate,"bookStatus":bookStatus };
     this.bookingService.updateBooking(post,id).subscribe(res => {
       if(res.statusCode=='1'){
-        this.isLoading=false;
-      this.toastr.success('Booking updated successfully.!','Success');
- this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["/viewBooking"]));  
-          }else{
-            this.isLoading=false;
-      this.toastr.error('Booking cant update successfully','Failed');
- this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["/viewBooking"]));   
-         }
+      this.isLoading=false;
+      this.toastr.success('Booking Information updated successfully','Success');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/viewBooking"]));
+      }else{
+       this.isLoading=false;
+      this.toastr.error('Booking Record not updated successfully','Failed');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/viewBooking"]));      }
     }, error => {
       this.isLoading=false;
-      this.toastr.error('Booking cant update successfully','Failed');
- this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.toastr.error('Booking Record not updated successfully','Failed');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["/viewBooking"]));    })
+       }
   }
+
 
    searchBooking(searchText){
     let search = searchText.target.value
     if(search==undefined||search==null||search==""){
       this.table=true;
       this.table1=false;
-      if( this.bookingList.length == 0){
+      if( this.bookingList == null){
         this.table=false;
         this.table1=false;
+          this.noData = "No Bookings been found matching the search text."
       }
       return;
     }this.isLoading=true;
@@ -118,7 +139,12 @@ export class ViewBookingComponent implements OnInit {
             this.noData="";
             this.table=false;
           } 
-      })
+   }, error => {
+      this.isLoading=false;
+       this.table1=false;
+          this.table=false;
+      this.noData = "No Bookings been found matching the search text."
+         })
   }
 
 }
