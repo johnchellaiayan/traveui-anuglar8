@@ -68,6 +68,8 @@ export class EditBookingComponent implements OnInit {
       bookStatus:[],
       id:[],
       version:[],
+      pickupArea:[],
+      dropArea:[]
 
     })
   }
@@ -96,11 +98,13 @@ export class EditBookingComponent implements OnInit {
     let customerRequest=value.customerRequest;
     let reportTime=value.reportTime;3
     let reportDate=value.reportDate;
+    let pickupArea=value.pickupArea;
+    let dropArea=value.dropArea;
     let bookStatus="Confirmed";
     let reportDateAndTime=reportDate+" "+reportTime;
     let version=parseInt(this.version)+1;
     this.isLoading=true;
-    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"version":version };
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"version":version,"pickupArea":pickupArea,"dropArea":dropArea };
     this.bookingService.updateBooking(post,this.id).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;
@@ -159,6 +163,8 @@ export class EditBookingComponent implements OnInit {
       this.customerRequest=this.bookingDetails.customerRequest;
       this.bookStatus=this.bookingDetails.bookStatus;
       this.id=this.bookingDetails.id;
+      this.pickupArea=this.bookingDetails.pickupArea;
+      this.dropArea=this.bookingDetails.dropArea;
       let datetime=this.bookingDetails.reportDate;
       let split = datetime.split(" ");
       this.reportDate=split[0];

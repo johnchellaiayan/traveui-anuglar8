@@ -59,7 +59,9 @@ bookingForm: FormGroup;
       remarks:[],
       complaints:[],
       customerRequest:[],
-      bookStatus:[]
+      bookStatus:[],
+      pickupArea:[],
+      dropArea:[]
       
     })
   }
@@ -88,10 +90,12 @@ bookingForm: FormGroup;
     let customerRequest=value.customerRequest;
     let reportTime=value.reportTime;3
     let reportDate=value.reportDate;
+    let pickupArea=value.pickupArea;
+    let dropArea=value.dropArea;
     let bookStatus="Confirmed";
     let reportDateAndTime=reportDate+" "+reportTime+":00";
     this.isLoading=true;
-    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus };
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"pickupArea":pickupArea,"dropArea":dropArea };
     this.bookingService.addBooking(post).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;
@@ -135,6 +139,8 @@ bookingForm: FormGroup;
     this.custPhone1=customer.phoneNo1;
     this.custPhone2=customer.phoneNo2;
     this.customerRequest=customer.customerRequest;
+    this.fromAddress=customer.address;
+    this.toAddress=customer.address;
 
   }
 }

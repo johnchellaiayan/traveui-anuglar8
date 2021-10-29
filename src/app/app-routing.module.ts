@@ -15,6 +15,7 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
 import { LoginGuard } from './login.guard';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -32,6 +33,8 @@ const routes: Routes = [
   { path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [LoginGuard] },
   { path: 'editDriver/:id', component: EditDriverComponent , canActivate: [LoginGuard]},
   { path: 'editBooking/:id', component: EditBookingComponent , canActivate: [LoginGuard]},
+  { path: 'message/:id', component: MessageComponent , canActivate: [LoginGuard]},
+
 ];
 
 @NgModule({

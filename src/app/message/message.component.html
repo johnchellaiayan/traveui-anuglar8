@@ -1,0 +1,78 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Send Notification</div>
+    <div class="page__content shadow p-3 position-relative">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="header-icon">
+                    <i class="pe-7s-note2"></i>
+                </div>
+            </section>
+            <div *ngIf="false" class="loader"></div>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- Form controls -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-bd lobidrag">
+                            <div class="panel-heading">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" routerLink="/viewBooking"> <i class="fa fa-list"></i>
+                                        Booking List </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form action="#" id="form_sample_1"  class="col-sm-12">
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Customer Phone1
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" appTextDirective OnlyText="true"
+                                            maxlength="35" placeholder="Enter Customer number..." required>
+
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver phone1
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" appTextDirective OnlyText="true"
+                                            maxlength="100" placeholder="Enter driver number...">
+
+                                    </div>
+                                    <div class=" form-group col-sm-2">
+                                        
+                                        <input type="checkbox" class="form-check-input" >
+                                        <label style="  font-size: 18px;font-weight: 500;">&nbsp;Customer
+                                        </label>
+                                    </div>
+                                    <div class=" form-group col-sm-2">
+                                       
+                                        <input type="checkbox" class="form-check-input" >
+                                        <label style="  font-size: 18px;font-weight: 500;">&nbsp;Driver
+                                        </label>
+                                    </div>
+                                    
+                                    <div class=" form-group col-sm-2">
+                                       
+                                        <input type="checkbox" class="form-check-input" >&nbsp;
+                                        <i class="fa fa-whatsapp"></i>
+                                    </div>
+                                    <div class=" form-group col-sm-2">
+                                       
+                                        <input type="checkbox" class="form-check-input" >&nbsp;
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="col-sm-12 reset-button">
+                                        <a routerLink="/viewBooking" class="btn btn-warning">Cancel</a>
+                                        <a  class="btn btn-success">Send</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section> <!-- /.content -->
+        </div> <!-- /.content-wrapper -->
+    </div>
+</div>

@@ -39,6 +39,7 @@ import { environment } from '../environments/environment';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -60,7 +61,8 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     SignupComponent,
     EditCustomerComponent,
     EditDriverComponent,
-    EditBookingComponent
+    EditBookingComponent,
+    MessageComponent
       ],
   imports: [
     BrowserModule,

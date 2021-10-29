@@ -107,7 +107,18 @@
                     appTextDirective OnlyText="true" rows="3"
                       placeholder="Enter SMS To ..."></textarea>
                   </div>
-
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">Pickup Area</label>
+                    <textarea id="some-textarea" class="form-control" [(ngModel)]="pickupArea" formControlName="pickupArea"
+                    appTextDirective OnlyText="true" rows="3"
+                      placeholder="Enter Pickup Area ..."></textarea>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">Drop Area</label>
+                    <textarea id="some-textarea" class="form-control"[(ngModel)]="dropArea" formControlName="dropArea"
+                    appTextDirective OnlyText="true" rows="3"
+                      placeholder="Enter Drop Area ..."></textarea>
+                  </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">From Address</label>
                     <textarea id="some-textarea" class="form-control" [(ngModel)]="fromAddress" formControlName="fromAddress"
