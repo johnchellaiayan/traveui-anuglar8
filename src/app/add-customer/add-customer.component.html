@@ -57,14 +57,9 @@
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Phone2
-                      <span class="required"> * </span>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="phone2" appTextDirective OnlyText="true"
                       formControlName="phone2" maxlength="300" placeholder="Enter Mobile">
-                    <span *ngIf="submitted && f.phone2.errors" style="color:red;font-size: small;">
-                      <span *ngIf="f.phone2.errors.required" class="commonFont">
-                        Customer Phone2 is required.! </span>
-                    </span>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Customer Mobile1
@@ -78,15 +73,11 @@
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">Customer Mobile2
-                      <span class="required"> * </span>
+                    <label style="  font-size: 18px;font-weight: 500;">Customer Mobile2 &nbsp;
+                      <i class="fa fa-whatsapp" style="color: blue"></i>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="mobile2" appTextDirective OnlyText="true"
                       formControlName="mobile2" maxlength="100" placeholder="Enter Mobile">
-                    <span *ngIf="submitted && f.mobile2.errors" style="color:red;font-size: small;">
-                      <span *ngIf="f.mobile2.errors.required" class="commonFont">
-                        Customer Mobile2 is required.! </span>
-                    </span>
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Car Name

@@ -44,7 +44,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  font-size: 15px;
+  font-size: 12.5px;
   background-color:whitesmoke;
   color: black;
 }
@@ -198,7 +198,7 @@
 .table-scrollable {
   max-height: 520px;
   overflow: auto !important;
-  overflow-x: hidden !important;
+  overflow-x: visible !important;
   overflow-y: auto;
 }
 .table-scrollable::-webkit-scrollbar {
@@ -215,7 +215,7 @@ tr, td, th, thead {
   text-align: center;
 }
 th{
-  font-size: 14px;
+  font-size: 12.5px;
 }
 td{
   font-size: 13px;

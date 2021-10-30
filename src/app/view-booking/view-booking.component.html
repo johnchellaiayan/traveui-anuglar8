@@ -42,7 +42,7 @@
                   style=" position: relative;">
                   <thead>
                     <tr>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">S.No </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booking Id </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booked By </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Report Date </th>
@@ -50,9 +50,9 @@
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Pickup Area </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Drop Area </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Phone1 </th>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Vechile </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">vehicle </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">From Address </th>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">To address </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">To Address </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Complaints </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">SmsTo </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Request </th>
@@ -116,9 +116,14 @@
                           <i class="fa fa-ban" aria-hidden="true"></i>
                         </button>
                         <button mat-raised-button matTooltip="Send notification to users"
-                          class="btn  btn-xs animation-rotation"
-                          [routerLink]="['/message/',list.id]" id="btn2" style="color: white;">
+                          class="btn  btn-xs animation-rotation" [routerLink]="['/message/',list.id]" id="btn2"
+                          style="color: white;">
                           <i class="fa fa-send" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button matTooltip="Driver Issued"
+                          class="btn  btn-xs animation-rotation" (click)="driverIssued(list)" id="btn2"
+                          style="color: white;">
+                          <i class="fa fa-tasks" aria-hidden="true"></i>
                         </button>
 
                       </td>
@@ -130,7 +135,7 @@
                 <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
                   <thead>
                     <tr>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">S.No </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booking Id </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booked By </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Report Date </th>
@@ -138,7 +143,7 @@
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Pickup Area </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Drop Area </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Phone1 </th>
-                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Vechile </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">vehicle </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">From Address </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">To address </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Complaints </th>
@@ -204,8 +209,8 @@
                           <i class="fa fa-ban" aria-hidden="true"></i>
                         </button>
                         <button mat-raised-button matTooltip="Send notification to users"
-                          class="btn  btn-xs animation-rotation"
-                          [routerLink]="['/message/',list.id]" id="btn2" style="color: white;">
+                          class="btn  btn-xs animation-rotation" [routerLink]="['/message/',list.id]" id="btn2"
+                          style="color: white;">
                           <i class="fa fa-send" aria-hidden="true"></i>
                         </button>
 

@@ -16,6 +16,8 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
 import { LoginGuard } from './login.guard';
 import { MessageComponent } from './message/message.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -34,6 +36,9 @@ const routes: Routes = [
   { path: 'editDriver/:id', component: EditDriverComponent , canActivate: [LoginGuard]},
   { path: 'editBooking/:id', component: EditBookingComponent , canActivate: [LoginGuard]},
   { path: 'message/:id', component: MessageComponent , canActivate: [LoginGuard]},
+  { path: 'addUser', component: AddUserComponent, canActivate: [LoginGuard] },
+  { path: 'viewUser', component: ViewUserComponent, canActivate: [LoginGuard] },
+
 
 ];
 

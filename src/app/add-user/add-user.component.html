@@ -1,0 +1,136 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Add New User</div>
+    <div class="page__content shadow p-3 position-relative">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="header-icon">
+                    <i class="pe-7s-note2"></i>
+                </div>
+            </section>
+            <div *ngIf="isLoading" class="loader"></div>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- Form controls -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-bd lobidrag">
+                            <div class="panel-heading">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" routerLink="/dashboard"> <i class="fa fa-list"></i> User
+                                        List </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form action="#" id="form_sample_1" [formGroup]="userForm" class="col-sm-12">
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">First Name
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="firstName" appTextDirective
+                                            OnlyText="true" formControlName="firstName" maxlength="35"
+                                            placeholder="Enter First Name" required>
+                                        <span *ngIf="submitted && f.firstName.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.firstName.errors.required" class="commonFont">
+                                                First Name is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Last Name
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="lastName" appTextDirective
+                                            OnlyText="true" formControlName="lastName" maxlength="100"
+                                            placeholder="Enter Last Name">
+                                        <span *ngIf="submitted && f.lastName.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.lastName.errors.required" class="commonFont">
+                                                Last Name is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Mobile Number
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="mobileNumber"
+                                            appTextDirective OnlyText="true" formControlName="mobileNumber"
+                                            maxlength="100" placeholder="Enter Mobile">
+                                        <span *ngIf="submitted && f.mobileNumber.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.mobileNumber.errors.required" class="commonFont">
+                                                Mobile Number is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Date Of Birth
+                                        </label>
+                                        <input type="date" class="form-control" [(ngModel)]="dob" formControlName="dob"
+                                            placeholder="Enter Date of birth">
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Email
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <input type="text" class="form-control" [(ngModel)]="email" appTextDirective
+                                            OnlyText="true" formControlName="email" maxlength="100"
+                                            placeholder="Enter Email">
+                                        <span *ngIf="submitted && f.email.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.email.errors.required" class="commonFont">
+                                                Email Id is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Address
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <textarea id="some-textarea" class="form-control" rows="3" [(ngModel)]="address"
+                                            appTextDirective OnlyText="true" formControlName="address" maxlength="300"
+                                            placeholder="Enter address ..."></textarea>
+                                        <span *ngIf="submitted && f.address.errors" style="color:red;font-size: small;">
+                                            <span *ngIf="f.address.errors.required" class="commonFont">
+                                                Address is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Password
+                                        </label>
+                                        <span class="required"> * </span>
+                                        <input type="password" class="form-control" [(ngModel)]="password"
+                                            appTextDirective OnlyText="true" formControlName="password" maxlength="100"
+                                            placeholder="Enter Password">
+                                        <span *ngIf="submitted && f.password.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.password.errors.required" class="commonFont">
+                                                Password is required.! </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Retype Password
+                                        </label>
+                                        <span class="required"> * </span>
+                                        <input type="text" class="form-control" [(ngModel)]="password1" appTextDirective
+                                            OnlyText="password" formControlName="password1" maxlength="100"
+                                            placeholder="Retype your password">
+                                        <span *ngIf="submitted && f.password1.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.password1.errors.required" class="commonFont">
+                                                Confirm Password is required.! </span>
+                                        </span>
+                                        <div style="color:red;font-size: large;" class="commonFont">{{pwdMsg}}</div>
+                                    </div>
+
+                                    <div class="col-sm-12 reset-button">
+                                        <input type="reset" class="btn btn-warning" value="Reset" />
+                                        <a (click)="addUser()" class="btn btn-success">Save</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section> <!-- /.content -->
+        </div> <!-- /.content-wrapper -->
+    </div>
+</div>

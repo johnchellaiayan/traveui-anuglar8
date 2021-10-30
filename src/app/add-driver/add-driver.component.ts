@@ -26,6 +26,7 @@ driverForm: FormGroup;
   licenseDate:any;
   licenseExpiryDate:any;
   isLoading:any;
+  identifierNo:any;
 
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router) { }
 
@@ -35,9 +36,10 @@ driverForm: FormGroup;
       address: ['', Validators.required],
       area: ['', Validators.required],
       phone1: ['', Validators.required],
-      phone2: ['', Validators.required],
+      phone2: [],
       mobile1: ['', Validators.required],
-      mobile2: ['', Validators.required],
+      mobile2: [],
+      identifierNo:[],
       license:['', Validators.required],
       licenseDate:['', Validators.required],
       licenseExpiryDate:['', Validators.required]
@@ -65,9 +67,10 @@ driverForm: FormGroup;
     let licenseDate=value.licenseDate;
     let licenseExpiryDate=value.licenseExpiryDate;
     let isResigned="true";
+    let identifierNo=value.identifierNo;
    
     this.isLoading=true;
-    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned };
+    let post = { "name": name, "address": address,"area":area,"phoneNo1":phone1,"phoneNo2":phone2,"mobileNo1":mobile1,"mobileNo2":mobile2,"licenseNo":license,"licenseDate":licenseDate,"licenseExpiryDate":licenseExpiryDate,"isResigned":isResigned,"identifierNo":identifierNo };
     this.driverService.addDriver(post).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;

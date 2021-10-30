@@ -9,7 +9,7 @@
         </div>
       </section>
       <!-- Main content -->
-      <div *ngIf="isLoading"  class="loader"></div>
+      <div *ngIf="isLoading" class="loader"></div>
       <section class="content">
         <div class="row">
           <!-- Form controls -->
@@ -56,15 +56,11 @@
                     </span>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <label style="  font-size: 18px;font-weight: 500;">Driver Mobile2
-                      <span class="required"> * </span>
+                    <label style="  font-size: 18px;font-weight: 500;">Driver Mobile2&nbsp;
+                      <i class="fa fa-whatsapp" style="color: blue"></i>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="mobile2" appTextDirective OnlyText="true"
                       formControlName="mobile2" maxlength="35" placeholder="Enter Mobile">
-                    <span *ngIf="submitted && f.mobile2.errors" style="color:red;font-size: small;">
-                      <span *ngIf="f.mobile2.errors.required" class="commonFont">
-                        Driver Mobile2 is required.! </span>
-                    </span>
                   </div>
 
                   <div class="col-sm-6 form-group">
@@ -80,14 +76,15 @@
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">Driver Phone2
-                      <span class="required"> * </span>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="phone2" appTextDirective OnlyText="true"
                       formControlName="phone2" maxlength="35" placeholder="Enter Mobile">
-                    <span *ngIf="submitted && f.phone2.errors" style="color:red;font-size: small;">
-                      <span *ngIf="f.phone2.errors.required" class="commonFont">
-                        Driver Phone2 is required.! </span>
-                    </span>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                    <label style="  font-size: 18px;font-weight: 500;">Identifier No
+                    </label>
+                    <input type="text" class="form-control" [(ngModel)]="identifierNo" appTextDirective OnlyText="true"
+                      formControlName="identifierNo" maxlength="35" placeholder="Enter Mobile">
                   </div>
                   <div class="col-sm-6 form-group">
                     <label style="  font-size: 18px;font-weight: 500;">License No
@@ -142,7 +139,7 @@
                   </div>
 
                   <div class="col-sm-12 reset-button">
-                    <input type="reset" class="btn btn-warning" value="Reset"  />
+                    <input type="reset" class="btn btn-warning" value="Reset" />
                     <a (click)="addDriver()" class="btn btn-success">Save</a>
                   </div>
                 </form>

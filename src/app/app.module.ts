@@ -32,6 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { SignupComponent } from './signup/signup.component';
 import { CustomerService } from './providers/customer.service';
+import { CommonService } from './providers/common.service';
 import { DriverService } from './providers/driver.service';
 import { BookingService } from './providers/booking.service';
 import { DashboardService } from './providers/dashboard.service';
@@ -40,6 +41,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditDriverComponent } from './edit-driver/edit-driver.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
 import { MessageComponent } from './message/message.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 
 
@@ -62,7 +65,9 @@ import { MessageComponent } from './message/message.component';
     EditCustomerComponent,
     EditDriverComponent,
     EditBookingComponent,
-    MessageComponent
+    MessageComponent,
+    AddUserComponent,
+    ViewUserComponent
       ],
   imports: [
     BrowserModule,
@@ -90,7 +95,7 @@ import { MessageComponent } from './message/message.component';
     MatDatepickerModule, 
     MatTooltipModule
   ],
-  providers: [CustomerService,DriverService,BookingService,DashboardService ],
+  providers: [CustomerService,DriverService,BookingService,DashboardService,CommonService ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

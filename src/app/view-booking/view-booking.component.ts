@@ -113,6 +113,43 @@ export class ViewBookingComponent implements OnInit {
       this.router.navigate(["/viewBooking"]));    })
        }
   }
+   driverIssued(value){
+    let bookedBy=value.bookedby;
+    let driverName=value.driverName;
+    let customerName=value.customerName;
+    let custPhone1=value.custPhone1;
+    let custPhone2=value.custPhone2;
+    let carName=value.carName;
+    let smsTo=value.smsTo;
+    let fromAddress=value.fromAddress;
+    let toAddress=value.toAddress;
+    let remarks=value.remarks;
+    let complaints=value.complaints;
+    let customerRequest=value.customerRequest;
+    let reportDate=value.reportDate;
+    let bookStatus="Completed";
+    let id=value.id;
+       if(window.confirm('Are sure you want to change this booking into completed?')){
+    this.isLoading=true;
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDate,"bookStatus":bookStatus };
+    this.bookingService.updateBooking(post,id).subscribe(res => {
+      if(res.statusCode=='1'){
+      this.isLoading=false;
+      this.toastr.success('Booking Information updated successfully','Success');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/viewBooking"]));
+      }else{
+       this.isLoading=false;
+      this.toastr.error('Booking Record not updated successfully','Failed');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/viewBooking"]));      }
+    }, error => {
+      this.isLoading=false;
+      this.toastr.error('Booking Record not updated successfully','Failed');
+      this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["/viewBooking"]));    })
+       }
+  }
 
 
    searchBooking(searchText){
