@@ -59,6 +59,7 @@ export class AddUserComponent implements OnInit {
     let dob=value.dob;
     let password=value.password;
     let password1=value.password1;
+    let roles=[{"id":"2","name":"admin"}];
     if(password===password1){
       this.pwdMsg="";
     }else{
@@ -67,7 +68,7 @@ export class AddUserComponent implements OnInit {
     }
    
     this.isLoading=true;
-    let post = { "firstName": firstName, "address": address,"mobileNumber":mobileNumber,"password":password,"lastName":lastName,"dob":dob,"email":email };
+    let post = { "firstName": firstName, "address": address,"mobileNumber":mobileNumber,"password":password,"lastName":lastName,"dob":dob,"email":email,"roles":roles };
     this.commonService.addUser(post).subscribe(res => {
       if(res.statusCode=='1'){
         this.isLoading=false;
