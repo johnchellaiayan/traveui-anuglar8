@@ -24,12 +24,16 @@ export class ViewBookingComponent implements OnInit {
   id:any;
   isLoading:any;
   bookingDate:any;
+  type:any;
+  types:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public bookingService:BookingService,public router:Router) { }
    
   ngOnInit(): void {
+    this.types=["Upcoming Bookings","Past Bookings"]
         this.bookingDate = new Date().toISOString().split('T')[0];
          this.bookingUpdateForm = this.formBuilder.group({
       bookingDate: ['',Validators.required],
+      type:[]
         })
     this.getBookingsOnInit();
     this.submitted= true;
@@ -60,6 +64,9 @@ export class ViewBookingComponent implements OnInit {
     getBookingList(){
       let value=this.bookingUpdateForm.value;
       let date=value.bookingDate;
+      if(date==undefined||date==null||date==""){
+
+      }else{
     this.bookingService.getBookingsByDate(date).subscribe(data => {
       this.bookingList = data["results"];
       if( this.bookingList == null){
@@ -74,6 +81,7 @@ export class ViewBookingComponent implements OnInit {
     }, error => {
      this.isLoading=false;
     })
+      }
   }
     
     cancelBooking(value){
@@ -183,6 +191,12 @@ export class ViewBookingComponent implements OnInit {
       this.noData = "No Bookings been found matching the search text."
          })
   }
-
+ selectedOption(option){
+    let type = option.value;
+    this.type=type;
+  }
+   displayFn(subject){
+   return subject ? subject : undefined;
+  }
 }
 

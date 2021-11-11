@@ -289,3 +289,17 @@ button.btn.animation-rotation-status {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.pull-right {
+  float: right !important;
+}

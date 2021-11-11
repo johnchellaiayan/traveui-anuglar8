@@ -34,7 +34,7 @@
                     [formControl]="bookingUpdateForm.controls.bookingDate" placeholder="Select date" required>
                 </div>
               </div>
-              <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
+              <div class="text-center text-danger" *ngIf="table==false" id="center"><br>{{noData}}</div>
               <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
                 [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
                 [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
@@ -120,9 +120,8 @@
                           style="color: white;">
                           <i class="fa fa-send" aria-hidden="true"></i>
                         </button>
-                        <button mat-raised-button matTooltip="Driver Issued"
-                          class="btn  btn-xs animation-rotation" (click)="driverIssued(list)" id="btn2"
-                          style="color: white;">
+                        <button mat-raised-button matTooltip="Driver Issued" class="btn  btn-xs animation-rotation"
+                          (click)="driverIssued(list)" id="btn2" style="color: white;">
                           <i class="fa fa-tasks" aria-hidden="true"></i>
                         </button>
 

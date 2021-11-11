@@ -26,9 +26,13 @@ export class AddUserComponent implements OnInit {
   password:any;
   password1:any;
   isLoading:any;
+  roles:any;
+  roles1:any;
+  role:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public commonService:CommonService,public router:Router) { }
 
   ngOnInit(): void {
+    this.roles=["Super Admin","Admin"];
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -38,6 +42,7 @@ export class AddUserComponent implements OnInit {
       password: ['', Validators.required],
       address:['', Validators.required],
       password1: ['', Validators.required],
+      role:[]
     })
   }
 
@@ -59,7 +64,12 @@ export class AddUserComponent implements OnInit {
     let dob=value.dob;
     let password=value.password;
     let password1=value.password1;
-    let roles=[{"id":"2","name":"admin"}];
+    let role=value.role;
+    if(role=="Super Admin"){
+     this.roles1=[{"id":"1","name":"super admin"}];
+    }else if(role=="Admin"){
+    this.roles1=[{"id":"2","name":"admin"}];
+    }
     if(password===password1){
       this.pwdMsg="";
     }else{
@@ -68,7 +78,7 @@ export class AddUserComponent implements OnInit {
     }
    
     this.isLoading=true;
-    let post = { "firstName": firstName, "address": address,"mobileNumber":mobileNumber,"password":password,"lastName":lastName,"dob":dob,"email":email,"roles":roles };
+    let post = { "firstName": firstName, "address": address,"mobileNumber":mobileNumber,"password":password,"lastName":lastName,"dob":dob,"email":email,"roles":this.roles1 };
     this.commonService.addUser(post).subscribe(res => {
       if(res.statusCode=='1'){
         this.isLoading=false;
@@ -84,5 +94,12 @@ export class AddUserComponent implements OnInit {
       this.toastr.error('User Record not saved','Failed');
       this.router.navigate(["/dashboard"]);
     })
+  }
+  selectedOption(option){
+    let role = option.value;
+    this.role=role;
+  }
+   displayFn(subject){
+   return subject ? subject : undefined;
   }
   }
