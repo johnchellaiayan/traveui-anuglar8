@@ -6,12 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DriverService } from '../providers/driver.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-view-driver',
-  templateUrl: './view-driver.component.html',
-  styleUrls: ['./view-driver.component.scss']
+  selector: 'app-liscense-expired-drivers',
+  templateUrl: './liscense-expired-drivers.component.html',
+  styleUrls: ['./liscense-expired-drivers.component.scss']
 })
-export class ViewDriverComponent implements OnInit {
-  table:boolean;
+export class LiscenseExpiredDriversComponent implements OnInit {
+ table:boolean;
   table1:boolean;
  noData;any;
  searchList:any;
@@ -20,8 +20,6 @@ export class ViewDriverComponent implements OnInit {
   driverList:any;
   id:any;
   isLoading:any;
-  limit:any;
-  offset:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public driverService:DriverService,public router:Router) { }
 
   ngOnInit(): void {
@@ -38,9 +36,7 @@ export class ViewDriverComponent implements OnInit {
     return this.driverUpdateForm.controls;
   }
     getDriverList(){
-      this.limit=10;
-      this.offset=0;
-    this.driverService.viewDrivers(this.limit,this.offset).subscribe(data => {
+    this.driverService.viewLiscenseExpiredDrivers().subscribe(data => {
       this.driverList = data.results;
       if( this.driverList.length == 0){
         this.table=false;
@@ -153,20 +149,6 @@ export class ViewDriverComponent implements OnInit {
             this.table=false;
           } 
       })
-  }
-  viewmore(){
-    this.limit =10;
-    this.offset =this.offset+this.limit;
-        this.isLoading=true;
-    this.driverService.viewDrivers(this.limit,this.offset).subscribe(data => {
-      for (let i in data){
-      this.driverList.push(data[i]);
-      }
-              this.isLoading=false;
-
-    }, error => {
-             this.isLoading=false;
-    })
   }
 
 }

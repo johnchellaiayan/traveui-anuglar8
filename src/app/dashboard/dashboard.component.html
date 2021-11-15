@@ -1,7 +1,7 @@
 <div class="container-fluid page">
   <div class="d-flex page__box p-3 mt-2">Dashboard</div>
   <div class="page__content shadow p-3 position-relative">
-
+    <div *ngIf="isLoading"  class="loader"></div>
     <body>
       <div class="row">
         <div class="main-part">
@@ -42,17 +42,17 @@
               <p>{{totalUsers}}</p>
             </div>
             <div class="card-content-part">
-              <a [routerLink]="['/dashboard']">More Details </a>
+              <a [routerLink]="['/viewUser']">More Details </a>
             </div>
           </div>
           <div class="cpanel cpanel-blue">
             <div class="icon-part">
               <i class="fa fa-drivers-license-o" aria-hidden="true"></i><br>
               <small>Expired Drivers License</small>
-              <p>1</p>
+              <p>{{expiredLiscenseDrivers}}</p>
             </div>
             <div class="card-content-part">
-              <a [routerLink]="['/viewDriver']">More Details </a>
+              <a [routerLink]="['/viewLicenseExpiredDrivers']">More Details </a>
             </div>
           </div>
           

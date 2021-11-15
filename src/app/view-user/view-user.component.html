@@ -1,1 +1,59 @@
-<p>view-user works!</p>
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">View Users</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="header-icon">
+            <i class="pe-7s-note2"></i>
+          </div>
+        </section>
+        <div *ngIf="isLoading"  class="loader"></div>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <!-- Form controls -->
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="panel panel-bd lobidrag">
+                  <div class="panel-heading">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" routerLink="/addUser"> <i class="fa fa-plus"></i> Add New Users
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
+                <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
+                  [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
+                  [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
+                  <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                    <thead>
+                      <tr>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">
+                          S.No</th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">First Name </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Last Name </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Address </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Mobile No </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd gradeX" *ngFor="let list of customerList">
+                        <td style="text-transform: capitalize">{{list.id}}</td>
+                        <td class="left">{{list.firstName}}</td>
+                        <td class="left">{{list.lastName}}</td>
+                        <td class="left">{{list.address}}</td>
+                        <td class="left">{{list.mobileNumber}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </section> <!-- /.content -->
+      </div> <!-- /.content-wrapper -->
+    </div>
+  </div>

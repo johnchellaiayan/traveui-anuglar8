@@ -29,8 +29,14 @@ export class DriverService {
       return res;
     }));
   }
-   viewDrivers(): Observable<any> {
-    return this.http.get(this.baseURL+"api/driver/drivers").pipe(map((res: Response) => {
+   viewDrivers(limit,offset): Observable<any> {
+    return this.http.get(this.baseURL+"api/driver/drivers/"+limit+"/"+offset).pipe(map((res: Response) => {
+      return res;
+    }));
+
+  }
+  viewLiscenseExpiredDrivers(): Observable<any> {
+    return this.http.get(this.baseURL+"api/driver/getLiscenseExpiredDrivers").pipe(map((res: Response) => {
       return res;
     }));
 

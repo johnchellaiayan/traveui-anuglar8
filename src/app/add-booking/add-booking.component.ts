@@ -92,10 +92,13 @@ bookingForm: FormGroup;
     let reportDate=value.reportDate;
     let pickupArea=value.pickupArea;
     let dropArea=value.dropArea;
+    let firstName=localStorage.getItem('uname');
+    let lastName=localStorage.getItem('lname');    
+    let loggedBy=firstName+" "+lastName;
     let bookStatus="Confirmed";
     let reportDateAndTime=reportDate+" "+reportTime+":00";
     this.isLoading=true;
-    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"pickupArea":pickupArea,"dropArea":dropArea };
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"pickupArea":pickupArea,"dropArea":dropArea,"loggedby":loggedBy };
     this.bookingService.addBooking(post).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;

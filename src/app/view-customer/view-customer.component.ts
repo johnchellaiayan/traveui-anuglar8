@@ -20,6 +20,8 @@ export class ViewCustomerComponent implements OnInit {
   searchList:any;
   customerList:any;
   isLoading:any;
+  limit:any;
+  offset:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public customerService:CustomerService,public router:Router) { }
 
   ngOnInit(): void {
@@ -38,7 +40,9 @@ export class ViewCustomerComponent implements OnInit {
   }
     getCustomerList(){
       this.isLoading=true;
-    this.customerService.viewCustomers().subscribe(data => {
+      this.limit =10;
+    this.offset =0
+    this.customerService.viewCustomers(this.limit,this.offset).subscribe(data => {
       this.isLoading=false;
       this.customerList = data.results;
       if( this.customerList.length == 0){
@@ -80,6 +84,20 @@ export class ViewCustomerComponent implements OnInit {
             this.table=false;
           } 
       })
+  }
+  viewmore(){
+    this.limit =10;
+    this.offset =this.offset+this.limit;
+        this.isLoading=true;
+    this.customerService.viewCustomers(this.limit,this.offset).subscribe(data => {
+      for (let i in data){
+      this.customerList.push(data[i]);
+      }
+              this.isLoading=false;
+
+    }, error => {
+             this.isLoading=false;
+    })
   }
 
 }

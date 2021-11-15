@@ -25,17 +25,16 @@ export class ViewBookingComponent implements OnInit {
   isLoading:any;
   bookingDate:any;
   type:any;
-  types:any;
+  limit:any;
+  offset:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public bookingService:BookingService,public router:Router) { }
    
   ngOnInit(): void {
-    this.types=["Upcoming Bookings","Past Bookings"]
-        this.bookingDate = new Date().toISOString().split('T')[0];
-         this.bookingUpdateForm = this.formBuilder.group({
+      this.bookingUpdateForm = this.formBuilder.group({
       bookingDate: ['',Validators.required],
       type:[]
         })
-    this.getBookingsOnInit();
+    this.getActiveBookingsOnInit();
     this.submitted= true;
     if(this.bookingUpdateForm.invalid){
       return;
@@ -44,11 +43,13 @@ export class ViewBookingComponent implements OnInit {
      get f(){
     return this.bookingUpdateForm.controls;
   }
-    getBookingsOnInit(){
+    getActiveBookingsOnInit(){
       let value=new Date().toISOString().split('T')[0];
-    this.bookingService.getBookingsByDate(value).subscribe(data => {
+      this.limit=10;
+      this.offset=0;
+    this.bookingService.viewBookings(this.limit,this.offset).subscribe(data => {
       this.bookingList = data["results"];
-      if( this.bookingList == null){
+      if( this.bookingList.length==0){
         this.table=false;
         this.noData = "No bookings been added to the system."
                   }else{
@@ -137,9 +138,10 @@ export class ViewBookingComponent implements OnInit {
     let reportDate=value.reportDate;
     let bookStatus="Completed";
     let id=value.id;
+    let loggedby=value.loggedby;
        if(window.confirm('Are sure you want to change this booking into completed?')){
     this.isLoading=true;
-    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDate,"bookStatus":bookStatus };
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDate,"bookStatus":bookStatus,"loggedby":loggedby };
     this.bookingService.updateBooking(post,id).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;
@@ -197,6 +199,20 @@ export class ViewBookingComponent implements OnInit {
   }
    displayFn(subject){
    return subject ? subject : undefined;
+  }
+    viewmore(){
+    this.limit =10;
+    this.offset =this.offset+this.limit;
+        this.isLoading=true;
+    this.bookingService.viewBookings(this.limit,this.offset).subscribe(data => {
+      for (let i in data){
+      this.bookingList.push(data[i]);
+      }
+              this.isLoading=false;
+
+    }, error => {
+             this.isLoading=false;
+    })
   }
 }
 

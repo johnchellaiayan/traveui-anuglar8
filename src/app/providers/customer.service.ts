@@ -28,8 +28,8 @@ export class CustomerService {
       return res;
     }));
   }
-   viewCustomers(): Observable<any> {
-    return this.http.get(this.baseURL+"api/customer/customers").pipe(map((res: Response) => {
+   viewCustomers(limit,offset): Observable<any> {
+    return this.http.get(this.baseURL+"api/customer/customers/"+limit+"/"+offset).pipe(map((res: Response) => {
       return res;
     }));
 

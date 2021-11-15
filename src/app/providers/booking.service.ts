@@ -29,8 +29,8 @@ public urlList = [];
       return res;
     }));
   }
-   viewBookings(): Observable<any> {
-    return this.http.get(this.baseURL+"api/booking/bookings").pipe(map((res: Response) => {
+   viewBookings(limit,offset): Observable<any> {
+    return this.http.get(this.baseURL+"api/booking/getActiveBookings/"+limit+"/"+offset).pipe(map((res: Response) => {
       return res;
     }));
 

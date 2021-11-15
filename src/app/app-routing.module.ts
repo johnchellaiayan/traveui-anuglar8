@@ -18,6 +18,7 @@ import { LoginGuard } from './login.guard';
 import { MessageComponent } from './message/message.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { LiscenseExpiredDriversComponent } from './liscense-expired-drivers/liscense-expired-drivers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'message/:id', component: MessageComponent , canActivate: [LoginGuard]},
   { path: 'addUser', component: AddUserComponent, canActivate: [LoginGuard] },
   { path: 'viewUser', component: ViewUserComponent, canActivate: [LoginGuard] },
+  { path: 'viewLicenseExpiredDrivers', component: LiscenseExpiredDriversComponent, canActivate: [LoginGuard] },
 
 
 ];

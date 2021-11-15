@@ -43,6 +43,7 @@ export class EditBookingComponent implements OnInit {
   id:any;
   bookingDetails:any;
   version:any;
+  loggedby:any;
   constructor(public formBuilder: FormBuilder,public toastr:ToastrService,public bookingService:BookingService,public driverService:DriverService,public router:Router,public ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -69,8 +70,8 @@ export class EditBookingComponent implements OnInit {
       id:[],
       version:[],
       pickupArea:[],
-      dropArea:[]
-
+      dropArea:[],
+      loggedby:[]
     })
   }
 
@@ -102,9 +103,9 @@ export class EditBookingComponent implements OnInit {
     let dropArea=value.dropArea;
     let bookStatus="Confirmed";
     let reportDateAndTime=reportDate+" "+reportTime;
-    let version=parseInt(this.version)+1;
+    let loggedby=this.loggedby;
     this.isLoading=true;
-    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"version":version,"pickupArea":pickupArea,"dropArea":dropArea };
+    let post = { "bookedby":bookedBy,"carName":carName,"driverName":driverName,"customerRequest":customerRequest,"custPhone1":custPhone1,"custPhone2":custPhone2,"fromAddress":fromAddress,"toAddress":toAddress,"smsTo":smsTo,"customerName":customerName,"remarks":remarks,"complaints":complaints,"reportDate":reportDateAndTime,"bookStatus":bookStatus,"pickupArea":pickupArea,"dropArea":dropArea,"loggedby":loggedby };
     this.bookingService.updateBooking(post,this.id).subscribe(res => {
       if(res.statusCode=='1'){
       this.isLoading=false;
@@ -170,6 +171,7 @@ export class EditBookingComponent implements OnInit {
       this.reportDate=split[0];
       this.reportTime=split[1];
       this.version=this.bookingDetails.version;
+      this.loggedby=this.bookingDetails.loggedby;
     }, error => {
        this.isLoading=false;
     })

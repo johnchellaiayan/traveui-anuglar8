@@ -1,0 +1,156 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">View License Drivers</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="header-icon">
+            <i class="pe-7s-note2"></i>
+          </div>
+        </section>
+        <div *ngIf="isLoading" class="loader"></div>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <!-- Form controls -->
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="panel panel-bd lobidrag">
+                  <div class="panel-heading">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" routerLink="/viewDriver"> <i class="fa fa-list"></i> View All Drivers
+                      </a>
+                    </div>
+                  </div>
+  
+                </div>
+                <div class="text-center text-danger" *ngIf="table==false" id="center">{{noData}}</div>
+                <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
+                  [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
+                  [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
+                  <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                    <thead>
+                      <tr>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">
+                          S.No</th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Address </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Area </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Mobile No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Phone No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Identifier No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}" style="width:100px;">Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd gradeX" *ngFor="let list of driverList">
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.id}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.name}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.address}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.area}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.mobileNo1}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.phoneNo1}}</td>
+                          <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.identifierNo}}</td>
+                        <td class="left">
+                            <button  mat-raised-button
+                            matTooltip="Edit Driver Details" class="btn btn-xs animation-rotation" [routerLink]="['/editDriver/',list.id]"
+                              style="color: white;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button  mat-raised-button
+                            matTooltip="Disable Driver" class="btn  btn-xs animation-rotation" id="btn2" (click)="disableDriver(list)"
+                              *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
+                              <i class="fa fa-ban" aria-hidden="true"></i>
+                            </button>
+                            <button  mat-raised-button
+                            matTooltip="Enable Driver" class="btn  btn-xs animation-rotation" id="btn2" (click)="enableDriver(list)"
+                              *ngIf='list.isResigned=="false"' style="color: white;">
+                              <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scrollable " *ngIf="table1">
+                  <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4">
+                    <thead>
+                      <tr>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">
+                          S.No</th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Address </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Area </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Mobile No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Phone No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Identifier No </th>
+                        <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}" style="width:100px;">Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd gradeX" *ngFor="let list of searchList">
+                        <td
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.id}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.name}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.address}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.area}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.mobileNo1}}</td>
+                        <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.phoneNo1}}</td>
+                          <td class="left"
+                          [ngStyle]="list.isResigned=='false'?{'background-color': '#ffc107'} : {'background-color': 'white'}">
+                          {{list.identifierNo}}</td>
+                        <td class="left">
+                          <button mat-raised-button matTooltip="Edit Driver Details" class="btn btn-xs animation-rotation"
+                            [routerLink]="['/editDriver/',list.id]" style="color: white;">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </button>
+                          <button mat-raised-button matTooltip="Disable driver" class="btn  btn-xs animation-rotation"
+                            id="btn2" (click)="disableDriver(list)"
+                            *ngIf='list.isResigned== null || list.isResigned== "true" ' style="color: white;">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                          </button>
+                          <button mat-raised-button matTooltip="Enable Driver" class="btn  btn-xs animation-rotation"
+                            id="btn2" (click)="enableDriver(list)"
+                            *ngIf=' list.isResigned !=null && list.isResigned=="false"' style="color: white;">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </section> <!-- /.content -->
+      </div> <!-- /.content-wrapper -->
+    </div>
+  </div>

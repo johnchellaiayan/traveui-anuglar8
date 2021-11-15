@@ -37,13 +37,14 @@
               <div class="text-center text-danger" *ngIf="table==false" id="center"><br>{{noData}}</div>
               <div class="table-scrollable ex1" infiniteScroll [infiniteScrollDistance]="2" [alwaysCallback]="false"
                 [infiniteScrollThrottle]="500" [infiniteScrollUpDistance]="0.5" [scrollWindow]="false"
-                [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" *ngIf="table">
+                [infiniteScrollContainer]="'.ex1'" [fromRoot]="true" (scrolled)="viewmore()" *ngIf="table">
                 <table class="table table-hover table-bordered table-checkable order-column full-width" id="example4"
                   style=" position: relative;">
                   <thead>
                     <tr>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booking Id </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booked By </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Created By </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Report Date </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Name </th>
@@ -63,46 +64,49 @@
                   <tbody>
                     <tr class="odd gradeX" *ngFor="let list of bookingList">
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.id}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.bookedby}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
+                        {{list.loggedby}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.driverName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.reportDate}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.customerName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.pickupArea}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.dropArea}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.custPhone1}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.carName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.fromAddress}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.toAddress}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.complaints}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.smsTo}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.customerRequest}}</td>
                       <td class="left">
                         <button mat-raised-button matTooltip="Update Booking Details"
@@ -136,6 +140,7 @@
                     <tr>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booking Id </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Booked By </th>
+                      <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Created By </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Driver Name </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Report Date </th>
                       <th class="stickey_header" [ngStyle]="{'background-color': '#E1E3E4'}">Customer Name </th>
@@ -155,46 +160,49 @@
                   <tbody>
                     <tr class="odd gradeX" *ngFor="let list of searchList">
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.id}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.bookedby}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
+                        {{list.loggedby}}</td>
+                      <td class="left"
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.driverName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.reportDate}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.customerName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.pickupArea}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.dropArea}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.custPhone1}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.carName}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.fromAddress}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.toAddress}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.complaints}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.smsTo}}</td>
                       <td class="left"
-                        [ngStyle]="list.driverName==null && list.bookStatus!='Cancelled' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} ">
+                        [ngStyle]="list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' && list.driverName==null || list.driverName=='' ?{'background-color': '#7CFC00'} : {'background-color': '#FF6347'} && list.driverName!=null && list.driverAssigningdTimeExceeded!=true && list.bookStatus!='Cancelled' ?{'background-color': '#FF6347'} : {'background-color': '#DC143C'} && list.driverAssigningdTimeExceeded==true && list.bookStatus!='Cancelled' ?{'background-color': '#FFFF00'} : {'background-color': '#7CFC00'}">
                         {{list.customerRequest}}</td>
                       <td class="left">
                         <button mat-raised-button matTooltip="Update Booking Details"

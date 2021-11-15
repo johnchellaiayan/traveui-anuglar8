@@ -22,49 +22,77 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form action="#" id="form_sample_1"  class="col-sm-12">
+                                <form action="#" id="form_sample_1"  [formGroup]="messageForm" class="col-sm-12">
                                     <div class="col-sm-6 form-group">
                                         <label style="  font-size: 18px;font-weight: 500;">Customer Phone1
-                                            <span class="required"> * </span>
+                                            <span class="required"> * </span> 
                                         </label>
-                                        <input type="text" class="form-control" appTextDirective OnlyText="true"
-                                            maxlength="35" placeholder="Enter Customer number..." required>
-
+                                        <input type="text" class="form-control" [(ngModel)]="customerPhone1"
+                                            appTextDirective OnlyText="true" formControlName="customerPhone1"
+                                            maxlength="30" placeholder="Enter Customer number..." required>
+                                        <span *ngIf="submitted && f.customerPhone1.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.customerPhone1.errors.required" class="commonFont">
+                                                Customer Phone1 is required.! </span>
+                                        </span>
                                     </div>
                                     <div class="col-sm-6 form-group">
-                                        <label style="  font-size: 18px;font-weight: 500;">Driver phone1
+                                        <label style="  font-size: 18px;font-weight: 500;">Driver Phone1
                                             <span class="required"> * </span>
                                         </label>
-                                        <input type="text" class="form-control" appTextDirective OnlyText="true"
-                                            maxlength="100" placeholder="Enter driver number...">
-
+                                        <input type="text" class="form-control" [(ngModel)]="driverPhone1"
+                                            appTextDirective OnlyText="true" formControlName="driverPhone1"
+                                            maxlength="30" placeholder="Enter Driver number..." required>
+                                        <span *ngIf="submitted && f.driverPhone1.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.driverPhone1.errors.required" class="commonFont">
+                                                Driver Phone1 is required.! </span>
+                                        </span>
                                     </div>
                                     <div class=" form-group col-sm-2">
-                                        
-                                        <input type="checkbox" class="form-check-input" >
+
+                                        <input type="checkbox" class="form-check-input" [(ngModel)]="customer"
+                                            formControlName="customer">
                                         <label style="  font-size: 18px;font-weight: 500;">&nbsp;Customer
                                         </label>
                                     </div>
                                     <div class=" form-group col-sm-2">
-                                       
-                                        <input type="checkbox" class="form-check-input" >
+
+                                        <input type="checkbox" class="form-check-input" [(ngModel)]="driver"
+                                            formControlName="driver">
                                         <label style="  font-size: 18px;font-weight: 500;">&nbsp;Driver
                                         </label>
                                     </div>
-                                    
+
                                     <div class=" form-group col-sm-2">
-                                       
-                                        <input type="checkbox" class="form-check-input" >&nbsp;
-                                        <i class="fa fa-whatsapp"></i>
+
+                                        <input type="checkbox" class="form-check-input" [(ngModel)]="whatsapp"
+                                            formControlName="whatsapp">&nbsp;
+                                        <i class="fa fa-whatsapp" style="color: green;"></i>
                                     </div>
                                     <div class=" form-group col-sm-2">
-                                       
-                                        <input type="checkbox" class="form-check-input" >&nbsp;
-                                        <i class="fa fa-comments"></i>
+
+                                        <input type="checkbox" class="form-check-input" [(ngModel)]="sms"
+                                            formControlName="sms">&nbsp;
+                                        <i class="fa fa-comments" style="color: blue;"></i>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label style="  font-size: 18px;font-weight: 500;">Message
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <textarea id="some-textarea" class="form-control" rows="3"
+                                            [(ngModel)]="comments" appTextDirective OnlyText="true"
+                                            formControlName="comments" maxlength="300"
+                                            placeholder="Enter message ..."></textarea>
+                                        <span *ngIf="submitted && f.comments.errors"
+                                            style="color:red;font-size: small;">
+                                            <span *ngIf="f.comments.errors.required" class="commonFont">
+                                                Message is required.! </span>
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 reset-button">
                                         <a routerLink="/viewBooking" class="btn btn-warning">Cancel</a>
-                                        <a  class="btn btn-success">Send</a>
+                                        <a class="btn btn-success" (click)="sendmessage()">Send</a>
                                     </div>
                                 </form>
                             </div>

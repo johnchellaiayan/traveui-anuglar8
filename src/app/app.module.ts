@@ -43,6 +43,7 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
 import { MessageComponent } from './message/message.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { LiscenseExpiredDriversComponent } from './liscense-expired-drivers/liscense-expired-drivers.component';
 
 
 
@@ -67,7 +68,8 @@ import { ViewUserComponent } from './view-user/view-user.component';
     EditBookingComponent,
     MessageComponent,
     AddUserComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    LiscenseExpiredDriversComponent
       ],
   imports: [
     BrowserModule,
