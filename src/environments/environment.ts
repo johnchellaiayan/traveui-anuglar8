@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:'http://localhost:27070/',
+  apiBaseUrl:'http://localhost:7070/',
   baseValue:'aaaaa',
   lockingTimeout: 10000, /* <----- locking Timeout  (10 seconds) */
   idleTimeOut: 14400, /* <----- Idle Time Out  (default : 14400 = 4 hours) */

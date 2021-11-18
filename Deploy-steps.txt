@@ -1,0 +1,10 @@
+#Create network
+# > docker network create ta-net
+
+# To build image
+# > docker build -t travelagency-ui .
+
+# to Create contianer
+# > docker run --net ta-net --name ta-ui -d -p 4200:80 travelagency-ui
+
+
